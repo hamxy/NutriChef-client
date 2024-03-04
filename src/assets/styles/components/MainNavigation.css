@@ -1,3 +1,21 @@
 header {
     background-color: aquamarine;
 }
+
+h1 {
+    margin: 0;
+    text-align: center;
+}
+
+.link-wrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.nav-link {
+    background-color: rgb(127, 238, 255);
+    text-decoration: none;
+    padding: 1em;
+    margin: 0 0.25em;
+}

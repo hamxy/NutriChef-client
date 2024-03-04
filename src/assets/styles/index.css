@@ -6,4 +6,9 @@ body {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
+
+  position: relative;
+  min-height: 100vh;
+  margin: 0;
+  background-color: rgb(228, 255, 107);
 }

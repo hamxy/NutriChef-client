@@ -1,10 +1,14 @@
+import "../../assets/styles/pages/Login.css";
 
-function LoginRoute() {
+function Login() {
   return (
-    <>
-      <h2>Login content</h2>
-    </>
+    <main>
+      <h1>Login Page</h1>
+      <form action="">
+
+      </form>
+    </main>
   );
 }
 
-export default LoginRoute;
+export default Login;

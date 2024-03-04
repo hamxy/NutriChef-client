@@ -7,10 +7,18 @@ function MainNavigation() {
 
   return (
     <header>
-      <h1>asdsa</h1>
-      <NavLink to="/">Home</NavLink>
-      <NavLink to="/register">Register</NavLink>
-      <NavLink to="/login">Login</NavLink>
+      <h1>Header</h1>
+      <div className="link-wrapper">
+        <NavLink className="nav-link" to="/">
+          Home
+        </NavLink>
+        <NavLink className="nav-link" to="/register">
+          Register
+        </NavLink>
+        <NavLink className="nav-link" to="/login">
+          Login
+        </NavLink>
+      </div>
     </header>
   );
 }
