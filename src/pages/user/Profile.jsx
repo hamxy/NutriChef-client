@@ -1,5 +1,15 @@
+import { useParams, Link } from "react-router-dom";
+
 function Profile() {
-  return <h1>User Profile</h1>;
+  const params = useParams();
+
+  return (
+    <main>
+      <h1>User Profile</h1>
+      <p>{params.userId}</p>
+      <Link to='..'>back</Link>
+    </main>
+  );
 }
 
 export default Profile;

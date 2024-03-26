@@ -4,19 +4,23 @@ import { NavLink } from "react-router-dom";
 
 function MainNavigation() {
   // const [isActive, setActive] = useState(false);
+  const user = "marian"
 
   return (
     <header>
       <h1>Header</h1>
       <div className="link-wrapper">
-        <NavLink className="nav-link" to="/">
+        <NavLink to="/">
           Home
         </NavLink>
-        <NavLink className="nav-link" to="/register">
+        <NavLink to="/register">
           Register
         </NavLink>
-        <NavLink className="nav-link" to="/login">
+        <NavLink to="/login">
           Login
+        </NavLink>
+        <NavLink to={`/user/${user}/profile`}>
+          Profile
         </NavLink>
       </div>
     </header>

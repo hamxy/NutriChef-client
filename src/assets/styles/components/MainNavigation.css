@@ -13,9 +13,17 @@ h1 {
     justify-content: center;
 }
 
-.nav-link {
+header a {
     background-color: rgb(127, 238, 255);
     text-decoration: none;
     padding: 1em;
     margin: 0 0.25em;
+}
+
+header a:hover {
+    background-color: rgb(57, 229, 255)
+}
+
+header a.active {
+    background-color: rgb(57, 229, 255)
 }

@@ -1,5 +1,55 @@
-main {
-    max-width: 80vw;
-    margin: auto;
-    padding: 2em 0;
+.main-login {
+    flex: 1;
+    width: 100vw;
+    margin: 0 auto;
+    justify-content: center;
+    background-color: rgb(0, 174, 255);
+    padding: 1em;
+    /* text-align: left; */
+}
+
+form {
+    box-sizing: border-box;
+    background-color: aquamarine;
+    /* width: ; */
+    /* Example: Limiting the maximum width to 400 pixels */
+    margin: 0 auto;
+    /* Center the form horizontally */
+}
+
+/* Style form labels */
+label {
+    display: block;
+    text-align: start;
+    margin-bottom: 0.5em;
+    /* Example: 0.5em bottom margin */
+}
+
+/* Style input fields */
+input {
+    padding: 0.5em;
+    margin-bottom: 1em;
+    /* Example: 1em bottom margin */
+    border: 1px solid #ccc;
+    border-radius: 0.3em;
+    /* Example: 0.3em border radius */
+}
+
+/* Style submit button */
+button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 0.75em 1.5em;
+    /* Example: Vertical padding of 0.75em, horizontal padding of 1.5em */
+    border: none;
+    border-radius: 0.3em;
+    cursor: pointer;
+    /* button[type="reset"] */
+}
+
+
+/* Hover effect for submit button */
+button[type="submit"]:hover,
+button[type="reset"]:hover {
+    background-color: #45a049;
 }
