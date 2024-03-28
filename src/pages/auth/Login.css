@@ -8,8 +8,8 @@
 }
 
 .logo {
-    width: 22vw;
-    height: 22vw;
+    width: 10em;
+    height: 10em;
 }
 
 .main-login h2 {
@@ -23,9 +23,15 @@
     color: var(--dark-gray);
 }
 
-section + p {
-    padding: 1.5em 0 2em;
-    text-align: end;
+.right {
+    text-align: right;
+}
+
+.link {
+    display: inline-block;
+    text-align: right;
+    margin: 1em 0;
+    padding: 0.5em 0
 }
 
 form {

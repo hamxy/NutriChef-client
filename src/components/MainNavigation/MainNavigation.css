@@ -1,19 +1,15 @@
 header {
     background-color: var(--blue);
-    height: 4em;
-    align-items: center;
+    height: 70px;
 }
 
 #hamburger {
     background-color: var(--blue);
     border: none;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    padding: 8px;
+    display: inline-block;
     margin-left: 1em;
-    width: 70px;
-    height: 100%;
+    width: 60px;
+    /* height: 100%; */
 }
 
 #hamburger span {
@@ -21,6 +17,7 @@ header {
     display: block;
     border-radius: 5px;
     height: 5px; 
+    margin-bottom: 7px;
     transition: all 0.2s;
     width: 100%;
 }
@@ -31,11 +28,15 @@ header {
 }
 
 #hamburger[aria-expanded="true"] span:first-child {
-    transform:  translateY(16px) rotate(45deg) scale(0.9);
+    margin: 0;
+    transform: rotate(45deg);
+    
 }
 
 #hamburger[aria-expanded="true"] span:last-child {
-    transform: translateY(-15px) rotate(-45deg) scale(0.9);
+    margin: 0;
+    transform: rotate(-45deg);
+    
 }
 
 

@@ -1,6 +1,6 @@
 // import { useState } from "react";
 import { useState, useEffect } from "react";
-import "../assets/styles/components/MainNavigation.css";
+import "./MainNavigation.css";
 // import { NavLink } from "react-router-dom";
 
 function MainNavigation() {

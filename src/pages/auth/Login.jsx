@@ -1,4 +1,4 @@
-import "../../assets/styles/pages/Login.css";
+import "./Login.css";
 import logo from "../../assets/images/logo.png";
 
 function Login() {
@@ -12,7 +12,7 @@ function Login() {
       <h2>Welcome back!</h2>
       <p className="subheading">Please sign in to continue</p>
       <form>
-        <section className="">
+        <section>
           <label htmlFor="email"></label>
           <input
             id="email"
@@ -24,7 +24,7 @@ function Login() {
           />
         </section>
 
-        <section className="">
+        <section>
           <label htmlFor="password"></label>
           <input
             id="password"
@@ -35,7 +35,11 @@ function Login() {
             required
           />
         </section>
-        <p>Forgot password?</p>
+        <section className="right">
+          <a className="link" href="">
+            Forgot password?
+          </a>
+        </section>
 
         <button type="submit" className="button">
           Sign In
