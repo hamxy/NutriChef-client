@@ -1,23 +1,47 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;0,700;0,900;1,300;1,400;1,500;1,700;1,900&display=swap');
 
-html, body, #root {
-  height: 100vh;
+html, body {
+  height: 100%;
   margin: 0;
-}
-
-
-main {
-  background-color: rgb(199, 255, 101);
-  box-sizing: border-box;
-  margin: 2em auto;
-  padding: 2em;
 }
 
 #root {
-  margin: 0;
   display: flex;
+  width: 100%;
   flex-direction: column;
+  height: 100%;
+}
+
+
+:root {
   font-family: "Roboto", sans-serif;
-  line-height: 1.5;
+  font-size: 16px;
+  line-height: 1.618;
+  font-weight: 300;
+
+  --white: #F8FAFD;
+  --blue: #154EB8;
+  --black: #151515;
+  --green: #57A773;
+  --light-gray: #EBEBEB;
+  --dark-gray: #8B8B8B;
+}
+
+h1 {
+  font-size: 4.23rem;
+  font-weight: 600;
+}
+
+h2 {
+  font-size: 2.62rem;
+  font-weight: 500;
+}
+
+h3 {
+  font-size: 1.618rem;
   font-weight: 400;
+}
+
+p {
+  font-weight: 300;
 }

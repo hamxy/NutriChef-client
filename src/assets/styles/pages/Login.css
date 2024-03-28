@@ -1,50 +1,63 @@
 .main-login {
     flex: 1;
-    width: 100vw;
-    margin: 0 auto;
-    justify-content: center;
-    background-color: rgb(0, 174, 255);
+    margin-top: 2em;
+    box-sizing: border-box;
     padding: 1em;
-    /* text-align: left; */
+    text-align: center;
+    background-color: var(--white);
+}
+
+.logo {
+    width: 22vw;
+    height: 22vw;
+}
+
+.main-login h2 {
+    margin: 0;
+    font-weight: 700;
+}
+
+.main-login p {
+    margin: 0;
+    font-weight: 400;
+    color: var(--dark-gray);
+}
+
+section + p {
+    padding: 1.5em 0 2em;
+    text-align: end;
 }
 
 form {
-    box-sizing: border-box;
-    background-color: aquamarine;
-    /* width: ; */
-    /* Example: Limiting the maximum width to 400 pixels */
-    margin: 0 auto;
-    /* Center the form horizontally */
+    margin: 1em auto;
 }
 
-/* Style form labels */
-label {
-    display: block;
-    text-align: start;
-    margin-bottom: 0.5em;
-    /* Example: 0.5em bottom margin */
-}
+
+
 
 /* Style input fields */
 input {
-    padding: 0.5em;
-    margin-bottom: 1em;
-    /* Example: 1em bottom margin */
-    border: 1px solid #ccc;
+    background-color: white;
+    box-sizing: border-box;
+    padding: 1.1em 0;
+    width: 100%;
+    text-align: center;
+    margin-top: 2em;
+    border: 1px solid var(--light-gray);
     border-radius: 0.3em;
-    /* Example: 0.3em border radius */
+    font-size: 1.1em;
+
 }
 
 /* Style submit button */
-button {
-    background-color: #4CAF50;
+button[type="submit"] {
+    background-color: var(--blue);
     color: white;
-    padding: 0.75em 1.5em;
-    /* Example: Vertical padding of 0.75em, horizontal padding of 1.5em */
-    border: none;
-    border-radius: 0.3em;
-    cursor: pointer;
-    /* button[type="reset"] */
+    padding: 1.5rem 0;
+    width: 100%;
+    font-size: 1.1em;
+    font-weight: 500;
+
 }
 
 

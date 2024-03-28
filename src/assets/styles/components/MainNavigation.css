@@ -1,29 +1,46 @@
 header {
-    background-color: aquamarine;
+    background-color: var(--blue);
+    height: 4em;
+    align-items: center;
 }
 
-h1 {
-    margin: 0;
-    text-align: center;
+#hamburger {
+    background-color: var(--blue);
+    border: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    padding: 8px;
+    margin-left: 1em;
+    width: 70px;
+    height: 100%;
 }
+
+#hamburger span {
+    background-color: var(--white);
+    display: block;
+    border-radius: 5px;
+    height: 5px; 
+    transition: all 0.2s;
+    width: 100%;
+}
+
+
+#hamburger[aria-expanded="true"] span:nth-child(2) {
+    transform: scaleX(0);
+}
+
+#hamburger[aria-expanded="true"] span:first-child {
+    transform:  translateY(16px) rotate(45deg) scale(0.9);
+}
+
+#hamburger[aria-expanded="true"] span:last-child {
+    transform: translateY(-15px) rotate(-45deg) scale(0.9);
+}
+
 
 .link-wrapper {
     display: flex;
     flex-direction: row;
     justify-content: center;
-}
-
-header a {
-    background-color: rgb(127, 238, 255);
-    text-decoration: none;
-    padding: 1em;
-    margin: 0 0.25em;
-}
-
-header a:hover {
-    background-color: rgb(57, 229, 255)
-}
-
-header a.active {
-    background-color: rgb(57, 229, 255)
 }
