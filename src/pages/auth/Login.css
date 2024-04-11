@@ -1,15 +1,16 @@
 .main-login {
-    flex: 1;
-    margin-top: 2em;
+    height: calc(100vh - 3em);
     box-sizing: border-box;
     padding: 1em;
+    overflow: auto;
+    padding-top: 3em;
     text-align: center;
     background-color: var(--white);
 }
 
 .logo {
-    width: 10em;
-    height: 10em;
+    width: 5em;
+    height: 5em;
 }
 
 .main-login h2 {
@@ -21,54 +22,4 @@
     margin: 0;
     font-weight: 400;
     color: var(--dark-gray);
-}
-
-.right {
-    text-align: right;
-}
-
-.link {
-    display: inline-block;
-    text-align: right;
-    margin: 1em 0;
-    padding: 0.5em 0
-}
-
-form {
-    margin: 1em auto;
-}
-
-
-
-
-/* Style input fields */
-input {
-    background-color: white;
-    box-sizing: border-box;
-    padding: 1.1em 0;
-    width: 100%;
-    text-align: center;
-    margin-top: 2em;
-    border: 1px solid var(--light-gray);
-    border-radius: 0.3em;
-    font-size: 1.1em;
-
-}
-
-/* Style submit button */
-button[type="submit"] {
-    background-color: var(--blue);
-    color: white;
-    padding: 1.5rem 0;
-    width: 100%;
-    font-size: 1.1em;
-    font-weight: 500;
-
-}
-
-
-/* Hover effect for submit button */
-button[type="submit"]:hover,
-button[type="reset"]:hover {
-    background-color: #45a049;
 }

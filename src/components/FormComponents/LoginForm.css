@@ -1,0 +1,59 @@
+form {
+    padding: 1em auto;
+}
+
+.link {
+    display: inline-block;
+    text-align: right;
+    margin: 1em 0;
+    padding: 0.5em 0
+}
+
+.right {
+    text-align: right;
+}
+
+.under-btn {
+    margin-top: 1.5em;
+}
+
+.blue {
+    margin-left: 0.5em;
+    color: var(--blue);
+    text-decoration: none;
+    font-weight: 600;
+}
+
+
+
+/* Style input fields */
+input {
+    background-color: white;
+    box-sizing: border-box;
+    padding: 1.1em 0;
+    width: 100%;
+    text-align: center;
+    margin-top: 1.2em;
+    border: 1px solid var(--light-gray);
+    border-radius: 0.3em;
+    font-size: 1.1em;
+
+}
+
+/* Style submit button */
+button[type="submit"] {
+    background-color: var(--blue);
+    /* background-color: #FFC145; */
+    color: white;
+    padding: 1.5rem 0;
+    width: 100%;
+    font-size: 1.1em;
+    font-weight: 500;
+    transition: background-color 0.3s;
+}
+
+
+/* Hover effect for submit button */
+button[type="submit"]:hover {
+    background-color: var(--orange);
+}
