@@ -1,43 +1,63 @@
+import { useState } from "react";
+import axios from "axios";
+import Cookies from "js-cookie";
 import "./LoginForm.css";
+import { useNavigate } from "react-router-dom";
+import { Snackbar } from "@mui/joy";
 
 function LoginForm() {
-  const handleSubmit = (event) => {
-    event.preventDefault();
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [loginFailed, setLoginFailed] = useState(false);
+  const navigate = useNavigate();
+  const url = "http://localhost:3000/auth/login";
 
-    const fd = new FormData(event.target);
-    Object.fromEntries(fd.entries());
-    const data = Object.fromEntries(fd.entries());
-    console.log(data);
+  /**
+   * Handle submitting the form
+   */
+  const handleSubmit = async (e) => {
+    e.preventDefault();
 
-    const url = "http://localhost:3000/login";
-    const options = {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json", // Specify content type if sending JSON data
-        // Add any other headers as needed
-      },
-      body: JSON.stringify(data), // Convert data to JSON string before sending
-    };
-
-    fetch(url, options)
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error("Network response was not ok");
-        }
-        return response.json();
-      })
-      .then((data) => {
-        // Handle the response data here
-        console.log("Response:", data);
-      })
-      .catch((error) => {
-        // Handle any errors that occur during the fetch operation
-        console.error("Error:", error);
+    try {
+      // Send form data to server
+      const response = await axios.post(url, {
+        email: email,
+        password: password,
       });
+      console.log("Form submitted successfully", response.data);
+
+      // Save the token in cookies
+      Cookies.set("jwt", response.data.token, { expires: 1 }); // Expires in 1 day
+
+      // Redirect to a protected route, e.g., dashboard
+      navigate("/");
+    } catch (error) {
+      console.error("Error submitting form", error);
+      setLoginFailed(true);
+    }
+  };
+
+  /**
+   * Handle closing snack
+   */
+
+  const handleSnackClose = () => {
+    setLoginFailed(false);
+    setPassword("");
   };
 
   return (
     <form onSubmit={handleSubmit}>
+      <div>
+        <Snackbar
+          open={loginFailed}
+          autoHideDuration={3000}
+          color="danger"
+          onClose={handleSnackClose}
+        >
+          Login failed. Incorrect email or password.
+        </Snackbar>
+      </div>
       <section>
         <label htmlFor="email"></label>
         <input
@@ -45,7 +65,7 @@ function LoginForm() {
           type="email"
           name="email"
           placeholder="Email"
-          onChange={(e) => console.log(e)}
+          onChange={(e) => setEmail(e.target.value)}
           required
         />
       </section>
@@ -57,7 +77,8 @@ function LoginForm() {
           type="password"
           name="password"
           placeholder="Password"
-          onChange={(e) => console.log(e)}
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
           required
         />
       </section>

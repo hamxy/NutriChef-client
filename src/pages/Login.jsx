@@ -1,6 +1,6 @@
 import "./Login.css";
-import logo from "../../assets/images/logo.png";
-import LoginForm from "../../components/FormComponents/LoginForm";
+import logo from "../assets/images/logo.png";
+import LoginForm from "../components/FormComponents/LoginForm";
 
 function Login() {
   return (

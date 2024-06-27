@@ -1,23 +1,11 @@
-// import { useState } from "react";
-import { useState, useEffect } from "react";
-import "./MainNavigation.css";
-import { NavLink } from "react-router-dom";
+import MobileDrawer from "./MobileDrawer";
+import DesktopSideNav from "./DesktopSideNav";
+import { useMediaQuery } from "@mui/material";
 
 function MainNavigation() {
-  const [isExpanded, setExpanded] = useState(false);
-  const [isActive, setActive] = useState(false);
-  const user = "marian";
+  const isDesktop = useMediaQuery("(min-width: 769px)");
 
-  useEffect(() => {}, [isExpanded]);
-
-  return (
-    <header>
-      <NavLink className={"navlink"} to="/">Home</NavLink>
-      <NavLink className={"navlink"} to="/register">Register</NavLink>
-      <NavLink className={"navlink"} to="/login">Login</NavLink>
-      <NavLink className={"navlink"} to={`/user/${user}/profile`}>Profile</NavLink>
-    </header>
-  );
+  return <header>{isDesktop ? <DesktopSideNav /> : <MobileDrawer />}</header>;
 }
 
 export default MainNavigation;

@@ -1,5 +1,5 @@
-import logo from "../../assets/images/logo.png";
-import RegisterForm from "../../components/FormComponents/RegisterForm";
+import logo from "../assets/images/logo.png";
+import RegisterForm from "../components/FormComponents/RegisterForm";
 
 function Register() {
   return (
