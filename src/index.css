@@ -3,6 +3,19 @@
 html, body, #root {
   height: 100vh;
   margin: 0;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+/* Highlighted text */
+::-moz-selection {
+  background: #FFE1CE;
+}
+::-webkit-selection {
+  background: #FFE1CE;
+}
+::selection {
+  background: #FFE1CE;
 }
 
 

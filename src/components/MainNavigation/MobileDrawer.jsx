@@ -1,13 +1,40 @@
-import { useState } from "react";
+import { useState, Fragment } from "react";
 import { NavLink } from "react-router-dom";
-import { Drawer, ModalClose, IconButton } from "@mui/joy";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  Drawer,
+  ModalClose,
+  IconButton,
+  List,
+  ListItemButton,
+  Box,
+  Typography,
+} from "@mui/joy";
 import Menu from "@mui/icons-material/Menu";
 
 const MobileDrawer = () => {
   const [isOpen, setIsOpen] = useState(false);
+
+  const navigation = [
+    {
+      title: "Dashboard",
+      path: "/",
+      icon: "fa-solid fa-gauge",
+    },
+    {
+      title: "Recipe Explorer",
+      path: "/recipes",
+      icon: "fa-solid fa-utensils",
+    },
+    {
+      title: "Profile",
+      path: "/profile",
+      icon: "fa-solid fa-user",
+    },
+  ];
   return (
     <>
-      <div className="hamburger" style={styles.hamburger}>
+      <Fragment>
         <IconButton
           variant="outlined"
           color="neutral"
@@ -15,17 +42,68 @@ const MobileDrawer = () => {
         >
           <Menu />
         </IconButton>
-      </div>
-      <Drawer open={isOpen} size="sm" onClose={() => setIsOpen(false)}>
-        <ModalClose />
-        Hello
-        <NavLink className={"navlink"} to="/">
-          Home
-        </NavLink>
-        <NavLink className={"navlink"} to="/profile">
-          profile
-        </NavLink>
-      </Drawer>
+        <Drawer
+          open={isOpen}
+          onClose={() => setIsOpen(false)}
+          sx={{ "& .MuiDrawer-paper": { backgroundColor: "red" } }}
+        >
+          <Box
+            sx={{
+              display: "flex",
+              alignItems: "center",
+              gap: 0.5,
+              ml: "auto",
+              mt: 1,
+              mr: 2,
+            }}
+          >
+            <Typography
+              component="label"
+              htmlFor="close-icon"
+              fontSize="sm"
+              fontWeight="lg"
+              sx={{ cursor: "pointer" }}
+            >
+              Close
+            </Typography>
+            <ModalClose id="close-icon" sx={{ position: "initial" }} />
+          </Box>
+          <List
+            size="lg"
+            component="nav"
+            sx={{
+              display: "flex",
+              fontSize: "xl",
+              justifyContent: "center",
+              gap: "80px",
+            }}
+          >
+            {navigation.map((item, index) => (
+              <ListItemButton
+                key={index}
+                sx={{
+                  fontWeight: "lg",
+                  justifyContent: "center",
+                  display: "flex",
+                  flexDirection: "column",
+                }}
+              >
+                <FontAwesomeIcon
+                  icon={item.icon}
+                  style={{ fontSize: "25px" }}
+                />
+                {item.title}
+              </ListItemButton>
+            ))}
+            {/* <ListItemButton sx={{ fontWeight: "lg", justifyContent: "center" }}>
+              Home
+            </ListItemButton>
+            <ListItemButton>About</ListItemButton>
+            <ListItemButton>Studio</ListItemButton>
+            <ListItemButton>Contact</ListItemButton> */}
+          </List>
+        </Drawer>
+      </Fragment>
     </>
   );
 };

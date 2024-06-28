@@ -6,6 +6,7 @@ import Register from "../pages/Register";
 import Dashboard from "../pages/Dashboard";
 import Error from "../pages/Error";
 import Profile from "../pages/Profile";
+import RecipeExplorer from "../pages/RecipeExplorer";
 
 const router = createBrowserRouter([
   {
@@ -15,6 +16,7 @@ const router = createBrowserRouter([
     children: [
       { path: "/", element: <Dashboard /> },
       { path: "profile", element: <Profile /> },
+      { path: "recipes", element: <RecipeExplorer /> },
     ],
   },
   {
