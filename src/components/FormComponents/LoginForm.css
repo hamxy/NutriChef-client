@@ -5,8 +5,6 @@ form {
 .link {
     display: inline-block;
     text-align: right;
-    margin: 1em 0;
-    padding: 0.5em 0
 }
 
 .right {
@@ -19,31 +17,42 @@ form {
 
 .blue {
     margin-left: 0.5em;
-    color: var(--blue);
+    color: #FF7E3D;
     text-decoration: none;
     font-weight: 600;
 }
 
+.label {
+    display: inline-block;
+    text-align: center;
+    padding-top: 3em;
+}
+
+.center {
+    text-align: center;
+}
 
 
 /* Style input fields */
 input {
-    background-color: white;
     box-sizing: border-box;
     padding: 1.1em 0;
     width: 100%;
     text-align: center;
-    margin-top: 1.2em;
-    border: 1px solid var(--light-gray);
-    border-radius: 0.3em;
-    font-size: 1.1em;
+    margin-top: 0.5em;
+    border: 1px solid #FFC145;
+    border-radius: 15px;
+}
 
+input:focus {
+    border-color: #FF7E3D;
 }
 
 /* Style submit button */
 button[type="submit"] {
-    background-color: var(--blue);
-    /* background-color: #FFC145; */
+    background-color: #FFC145;
+    border: 1px solid #FFC145;
+    border-radius: 15px;
     color: white;
     padding: 1.5rem 0;
     width: 100%;

@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;0,700;0,900;1,300;1,400;1,500;1,700;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Titillium+Web:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700&display=swap');
 
 html, body, #root {
   height: 100vh;
@@ -20,7 +20,7 @@ html, body, #root {
 
 
 :root {
-  font-family: "Roboto", sans-serif;
+  font-family: "Titillium Web", sans-serif;
   font-size: 16px;
   line-height: 1.618;
   font-weight: 300;
@@ -41,7 +41,8 @@ h1 {
 
 h2 {
   font-size: 2.62rem;
-  font-weight: 500;
+  font-weight: 700;
+  color: #FF7E3D;
 }
 
 h3 {

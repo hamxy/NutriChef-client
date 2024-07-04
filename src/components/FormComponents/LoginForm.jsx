@@ -5,7 +5,7 @@ import "./LoginForm.css";
 import { useNavigate } from "react-router-dom";
 import { Snackbar } from "@mui/joy";
 
-function LoginForm() {
+function LoginForm({ styles }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loginFailed, setLoginFailed] = useState(false);
@@ -47,36 +47,38 @@ function LoginForm() {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form style={styles} onSubmit={handleSubmit}>
       <div>
         <Snackbar
           open={loginFailed}
-          autoHideDuration={3000}
-          color="danger"
+          autoHideDuration={4000}
+          color="warning"
           onClose={handleSnackClose}
         >
           Login failed. Incorrect email or password.
         </Snackbar>
       </div>
       <section>
-        <label htmlFor="email"></label>
+        <label className="label" htmlFor="email">
+          Email
+        </label>
         <input
           id="email"
           type="email"
           name="email"
-          placeholder="Email"
           onChange={(e) => setEmail(e.target.value)}
           required
         />
       </section>
 
       <section>
-        <label htmlFor="password"></label>
+        <label className="label" htmlFor="password">
+          Password
+        </label>
         <input
           id="password"
           type="password"
           name="password"
-          placeholder="Password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
           required
@@ -92,7 +94,7 @@ function LoginForm() {
         Sign In
       </button>
 
-      <section className="under-btn">
+      <section style={{ textAlign: "center" }} className="under-btn">
         <p>
           No account?
           <a className="blue" href="/register">
