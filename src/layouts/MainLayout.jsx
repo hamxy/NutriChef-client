@@ -10,7 +10,7 @@ function MainLayout() {
       <header
         style={{
           width: isDesktop ? "200px" : "0px",
-          backgroundColor: "#FF7E3D",
+          backgroundColor: "#FFC145",
         }}
       >
         <MainNavigation />

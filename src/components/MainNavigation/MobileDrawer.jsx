@@ -2,7 +2,6 @@ import { useState, Fragment } from "react";
 import { NavLink } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
-  Drawer,
   ModalClose,
   IconButton,
   List,
@@ -10,6 +9,7 @@ import {
   Box,
   Typography,
 } from "@mui/joy";
+import { Drawer } from "@mui/material";
 import Menu from "@mui/icons-material/Menu";
 
 const MobileDrawer = () => {
@@ -45,7 +45,7 @@ const MobileDrawer = () => {
         <Drawer
           open={isOpen}
           onClose={() => setIsOpen(false)}
-          sx={{ "& .MuiDrawer-paper": { backgroundColor: "red" } }}
+          sx={{ "& .MuiDrawer-paper": { backgroundColor: "#FFC145" } }}
         >
           <Box
             sx={{
@@ -66,7 +66,11 @@ const MobileDrawer = () => {
             >
               Close
             </Typography>
-            <ModalClose id="close-icon" sx={{ position: "initial" }} />
+            <ModalClose
+              onClick={() => setIsOpen(false)}
+              id="close-icon"
+              sx={{ position: "initial" }}
+            />
           </Box>
           <List
             size="lg"
@@ -92,15 +96,14 @@ const MobileDrawer = () => {
                   icon={item.icon}
                   style={{ fontSize: "25px" }}
                 />
-                {item.title}
+                <NavLink
+                  to={item.path}
+                  style={{ textDecoration: "none", color: "black" }}
+                >
+                  {item.title}
+                </NavLink>
               </ListItemButton>
             ))}
-            {/* <ListItemButton sx={{ fontWeight: "lg", justifyContent: "center" }}>
-              Home
-            </ListItemButton>
-            <ListItemButton>About</ListItemButton>
-            <ListItemButton>Studio</ListItemButton>
-            <ListItemButton>Contact</ListItemButton> */}
           </List>
         </Drawer>
       </Fragment>

@@ -37,7 +37,7 @@ const DesktopSideNav = () => {
               : {}),
           })}
         >
-          <FontAwesomeIcon icon={item.icon} style={{ fontSize: "25px" }} />
+          <FontAwesomeIcon icon={item.icon} style={{ fontSize: "20px" }} />
           {item.title}
         </NavLink>
       ))}
@@ -65,7 +65,7 @@ const styles = {
     // backgroundColor: "red",
     color: "white",
     textDecoration: "none",
-    fontSize: "18px",
+    fontSize: "16px",
     fontWeight: "500",
   },
 };
