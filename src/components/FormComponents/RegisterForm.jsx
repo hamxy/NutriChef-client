@@ -1,38 +1,41 @@
+import { useState } from "react";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
+import { Snackbar } from "@mui/joy";
+
 import "./RegisterForm.css";
 
 function RegisterForm() {
-  const handleSubmit = (event) => {
-    event.preventDefault();
+  const [name, setName] = useState("");
+  const [surname, setSurname] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const navigate = useNavigate();
+  const url = "http://localhost:3000/auth/register";
 
-    const fd = new FormData(event.target);
-    Object.fromEntries(fd.entries());
-    const data = Object.fromEntries(fd.entries());
+  /**
+   * Handle submitting the form
+   */
+  const handleSubmit = async (e) => {
+    e.preventDefault();
 
-    const url = "http://localhost:3000/login";
-    const options = {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json", // Specify content type if sending JSON data
-        // Add any other headers as needed
-      },
-      body: JSON.stringify(data), // Convert data to JSON string before sending
-    };
-
-    fetch(url, options)
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error("Network response was not ok");
-        }
-        return response.json();
-      })
-      .then((data) => {
-        // Handle the response data here
-        console.log("Response:", data);
-      })
-      .catch((error) => {
-        // Handle any errors that occur during the fetch operation
-        console.error("Error:", error);
+    try {
+      // Send form data to server
+      const response = await axios.post(url, {
+        email: email,
+        password: password,
       });
+      console.log("Form submitted successfully", response.data);
+
+      // Save the token in cookies
+      Cookies.set("jwt", response.data.token, { expires: 1 }); // Expires in 1 day
+
+      // Redirect to a protected route, e.g., dashboard
+      navigate("/");
+    } catch (error) {
+      console.error("Error submitting form", error);
+      setLoginFailed(true);
+    }
   };
 
   return (
@@ -95,6 +98,14 @@ function RegisterForm() {
       <button type="submit" className="button">
         Sign Up
       </button>
+      <section style={{ textAlign: "center" }} className="under-btn">
+        <p>
+          Already have account?
+          <a className="blue" href="/auth/login">
+            Sign in
+          </a>
+        </p>
+      </section>
     </form>
   );
 }

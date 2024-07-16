@@ -5,7 +5,7 @@ import "./LoginForm.css";
 import { useNavigate } from "react-router-dom";
 import { Snackbar } from "@mui/joy";
 
-function LoginForm({ styles }) {
+function LoginForm() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loginFailed, setLoginFailed] = useState(false);
@@ -47,7 +47,7 @@ function LoginForm({ styles }) {
   };
 
   return (
-    <form style={styles} onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit}>
       <div>
         <Snackbar
           open={loginFailed}
@@ -90,14 +90,14 @@ function LoginForm({ styles }) {
         </a>
       </section>
 
-      <button type="submit" className="button">
+      <button style={{ marginTop: 0 }} type="submit" className="button">
         Sign In
       </button>
 
       <section style={{ textAlign: "center" }} className="under-btn">
         <p>
           No account?
-          <a className="blue" href="/register">
+          <a className="blue" href="/auth/register">
             Sign up
           </a>
         </p>

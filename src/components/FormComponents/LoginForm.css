@@ -1,5 +1,11 @@
 form {
-    padding: 1em auto;
+    width: 90%;
+    padding: 0.5em 1em;
+}
+
+section {
+    margin: 0;
+    padding: 1em;
 }
 
 .link {
@@ -12,7 +18,7 @@ form {
 }
 
 .under-btn {
-    margin-top: 1.5em;
+    margin: 1.5em 0;
 }
 
 .blue {
@@ -25,7 +31,7 @@ form {
 .label {
     display: inline-block;
     text-align: center;
-    padding-top: 3em;
+    padding-top: 1em;
 }
 
 .center {
@@ -52,17 +58,34 @@ input:focus {
 button[type="submit"] {
     background-color: #FFC145;
     border: 1px solid #FFC145;
+    margin-top: 0;
     border-radius: 15px;
     color: white;
-    padding: 1.5rem 0;
+    padding: 1rem 0;
     width: 100%;
     font-size: 1.1em;
     font-weight: 500;
     transition: background-color 0.3s;
 }
 
-
-/* Hover effect for submit button */
 button[type="submit"]:hover {
-    background-color: var(--orange);
+    cursor: pointer;
+}
+
+
+/* Tablets */
+@media (min-width: 600px) {
+    form {
+        width: 70%;
+        padding: 0.5em 1em;
+    }
+}
+
+
+/* Tablets */
+@media (min-width: 900px) {
+    form {
+        width: 90%;
+        padding: 0.5em 1em;
+    }
 }
