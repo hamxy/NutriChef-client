@@ -1,9 +1,14 @@
 import { NavLink } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { library } from "@fortawesome/fontawesome-svg-core";
-import { faGauge, faUtensils, faUser } from "@fortawesome/free-solid-svg-icons";
+import {
+  faGauge,
+  faUtensils,
+  faUser,
+  faRightFromBracket,
+} from "@fortawesome/free-solid-svg-icons";
 
-library.add(faGauge, faUtensils, faUser);
+library.add(faGauge, faUtensils, faUser, faRightFromBracket);
 
 const DesktopSideNav = () => {
   const navigation = [
@@ -21,6 +26,11 @@ const DesktopSideNav = () => {
       title: "Profile",
       path: "/profile",
       icon: "fa-solid fa-user",
+    },
+    {
+      title: "Logout",
+      path: "/logout",
+      icon: "fa-solid fa-right-from-bracket",
     },
   ];
 
@@ -50,7 +60,7 @@ const styles = {
     display: "flex",
     height: "100vh",
     flexDirection: "column",
-    gap: "80px",
+    gap: "50px",
     alignItems: "center",
     justifyContent: "center",
   },

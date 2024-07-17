@@ -2,7 +2,7 @@ import { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { Snackbar } from "@mui/joy";
-
+import Cookies from "js-cookie";
 import "./RegisterForm.css";
 
 function RegisterForm() {
@@ -10,8 +10,9 @@ function RegisterForm() {
   const [surname, setSurname] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [registerFailed, setRegisterFailed] = useState(false);
   const navigate = useNavigate();
-  const url = "http://localhost:3000/auth/register";
+  const url = "http://localhost:3000/auth/signup";
 
   /**
    * Handle submitting the form
@@ -24,6 +25,8 @@ function RegisterForm() {
       const response = await axios.post(url, {
         email: email,
         password: password,
+        name: name,
+        surname: surname,
       });
       console.log("Form submitted successfully", response.data);
 
@@ -34,12 +37,30 @@ function RegisterForm() {
       navigate("/");
     } catch (error) {
       console.error("Error submitting form", error);
-      setLoginFailed(true);
+      setRegisterFailed(true);
     }
+  };
+
+  /**
+   * Handle closing snack
+   */
+
+  const handleSnackClose = () => {
+    setRegisterFailed(false);
   };
 
   return (
     <form onSubmit={handleSubmit}>
+      <div>
+        <Snackbar
+          open={registerFailed}
+          autoHideDuration={4000}
+          color="warning"
+          onClose={handleSnackClose}
+        >
+          Login failed. Incorrect email or password.
+        </Snackbar>
+      </div>
       <section className="inline">
         <label htmlFor="name" aria-hidden="true"></label>
         <input
@@ -47,7 +68,7 @@ function RegisterForm() {
           type="name"
           name="name"
           placeholder="Name"
-          onChange={(e) => console.log(e)}
+          onChange={(e) => setName(e.target.value)}
           required
         />
         <label htmlFor="surname" aria-hidden="true"></label>
@@ -56,7 +77,7 @@ function RegisterForm() {
           type="surname"
           name="surname"
           placeholder="Surname"
-          onChange={(e) => console.log(e)}
+          onChange={(e) => setSurname(e.target.value)}
           required
         />
       </section>
@@ -68,7 +89,7 @@ function RegisterForm() {
           type="email"
           name="email"
           placeholder="Email"
-          onChange={(e) => console.log(e)}
+          onChange={(e) => setEmail(e.target.value)}
           required
         />
       </section>
@@ -80,7 +101,7 @@ function RegisterForm() {
           type="password"
           name="password"
           placeholder="Password"
-          onChange={(e) => console.log(e)}
+          onChange={(e) => setPassword(e.target.value)}
           required
         />
       </section>

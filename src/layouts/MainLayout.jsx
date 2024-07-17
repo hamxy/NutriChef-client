@@ -3,7 +3,7 @@ import MainNavigation from "../components/MainNavigation/MainNavigation";
 import { useMediaQuery } from "@mui/material";
 
 function MainLayout() {
-  const isDesktop = useMediaQuery("(min-width: 934px)");
+  const isDesktop = useMediaQuery("(min-width: 900px)");
 
   return (
     <div style={isDesktop ? styles.desktop : styles.mobile}>

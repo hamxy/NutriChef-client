@@ -77,7 +77,7 @@ const MobileDrawer = () => {
             component="nav"
             sx={{
               display: "flex",
-              fontSize: "xl",
+              fontSize: "lg",
               justifyContent: "center",
               gap: "80px",
             }}
@@ -94,7 +94,7 @@ const MobileDrawer = () => {
               >
                 <FontAwesomeIcon
                   icon={item.icon}
-                  style={{ fontSize: "25px" }}
+                  style={{ fontSize: "20px" }}
                 />
                 <NavLink
                   to={item.path}
