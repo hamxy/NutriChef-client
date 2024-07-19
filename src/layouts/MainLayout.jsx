@@ -1,9 +1,19 @@
-import { Outlet } from "react-router-dom";
+import { useEffect } from "react";
+import Cookies from "js-cookie";
+import { Outlet, useNavigate } from "react-router-dom";
 import MainNavigation from "../components/MainNavigation/MainNavigation";
 import { useMediaQuery } from "@mui/material";
 
 function MainLayout() {
   const isDesktop = useMediaQuery("(min-width: 900px)");
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const token = Cookies.get("jwt");
+    if (!token) {
+      navigate("/auth/login");
+    }
+  }, [navigate]);
 
   return (
     <div style={isDesktop ? styles.desktop : styles.mobile}>
@@ -15,6 +25,7 @@ function MainLayout() {
       >
         <MainNavigation />
       </header>
+      {/* Main will take ramaining space */}
       <main style={{ flexGrow: 1 }}>
         <Outlet />
       </main>

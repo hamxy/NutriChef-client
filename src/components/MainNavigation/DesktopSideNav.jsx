@@ -29,7 +29,7 @@ const DesktopSideNav = () => {
     },
     {
       title: "Logout",
-      path: "/logout",
+      path: "/auth/logout",
       icon: "fa-solid fa-right-from-bracket",
     },
   ];

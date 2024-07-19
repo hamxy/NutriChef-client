@@ -31,6 +31,11 @@ const MobileDrawer = () => {
       path: "/profile",
       icon: "fa-solid fa-user",
     },
+    {
+      title: "Logout",
+      path: "/auth/logout",
+      icon: "fa-solid fa-right-from-bracket",
+    },
   ];
   return (
     <>
