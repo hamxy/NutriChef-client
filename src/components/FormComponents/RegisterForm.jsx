@@ -1,8 +1,7 @@
 import { useState } from "react";
-import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { Snackbar } from "@mui/joy";
-import Cookies from "js-cookie";
+import { register } from "../../services/authService";
 import "./RegisterForm.css";
 
 function RegisterForm() {
@@ -12,7 +11,6 @@ function RegisterForm() {
   const [password, setPassword] = useState("");
   const [registerFailed, setRegisterFailed] = useState(false);
   const navigate = useNavigate();
-  const url = "http://localhost:3000/auth/signup";
 
   /**
    * Handle submitting the form
@@ -22,17 +20,7 @@ function RegisterForm() {
 
     try {
       // Send form data to server
-      const response = await axios.post(url, {
-        email: email,
-        password: password,
-        name: name,
-        surname: surname,
-      });
-      console.log("Form submitted successfully", response.data);
-
-      // Save the token in cookies
-      Cookies.set("jwt", response.data.token, { expires: 1 }); // Expires in 1 day
-
+      await register(email, password, name, surname);
       // Redirect to a protected route, e.g., dashboard
       navigate("/");
     } catch (error) {

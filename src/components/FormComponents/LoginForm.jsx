@@ -19,7 +19,7 @@ function LoginForm() {
     try {
       // get data from api
       await login(email, password);
-      // Redirect to a protected route, e.g., dashboard
+      // Redirect
       navigate("/");
     } catch (error) {
       console.error("Error submitting form", error);

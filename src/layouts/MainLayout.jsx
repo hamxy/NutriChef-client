@@ -1,22 +1,9 @@
-import { useEffect } from "react";
-import Cookies from "js-cookie";
-import { Outlet, useNavigate } from "react-router-dom";
+import { Outlet } from "react-router-dom";
 import MainNavigation from "../components/MainNavigation/MainNavigation";
 import { useMediaQuery } from "@mui/material";
 
 function MainLayout() {
   const isDesktop = useMediaQuery("(min-width: 900px)");
-  const navigate = useNavigate();
-
-  useEffect(() => {
-    const token = Cookies.get();
-    console.log(token);
-
-    console.log(token);
-    if (!token) {
-      navigate("/auth/login");
-    }
-  }, [navigate]);
 
   return (
     <div style={isDesktop ? styles.desktop : styles.mobile}>
