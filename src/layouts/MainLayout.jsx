@@ -9,7 +9,10 @@ function MainLayout() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    const token = Cookies.get("jwt");
+    const token = Cookies.get();
+    console.log(token);
+
+    console.log(token);
     if (!token) {
       navigate("/auth/login");
     }

@@ -1,6 +1,5 @@
 import { useState } from "react";
-import axios from "axios";
-import Cookies from "js-cookie";
+import { login } from "../../services/authService";
 import "./LoginForm.css";
 import { useNavigate } from "react-router-dom";
 import { Snackbar } from "@mui/joy";
@@ -10,7 +9,6 @@ function LoginForm() {
   const [password, setPassword] = useState("");
   const [loginFailed, setLoginFailed] = useState(false);
   const navigate = useNavigate();
-  const url = "http://localhost:3000/auth/login";
 
   /**
    * Handle submitting the form
@@ -19,16 +17,8 @@ function LoginForm() {
     e.preventDefault();
 
     try {
-      // Send form data to server
-      const response = await axios.post(url, {
-        email: email,
-        password: password,
-      });
-      console.log("Form submitted successfully", response.data);
-
-      // Save the token in cookies
-      Cookies.set("jwt", response.data.token, { expires: 1 }); // Expires in 1 day
-
+      // get data from api
+      await login(email, password);
       // Redirect to a protected route, e.g., dashboard
       navigate("/");
     } catch (error) {
