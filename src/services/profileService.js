@@ -26,4 +26,16 @@ const updateProfile = async (profileData) => {
   }
 };
 
-export { getProfile, updateProfile };
+const uploadPhoto = async (formData) => {
+  const response = await axios.post(
+    `${API_URL}/profile/upload-photo`,
+    formData,
+    {
+      withCredentials: true, // Include credentials (cookies)
+    }
+  );
+
+  return response;
+};
+
+export { getProfile, updateProfile, uploadPhoto };
