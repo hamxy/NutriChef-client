@@ -44,6 +44,7 @@ const MobileDrawer = () => {
           variant="outlined"
           color="neutral"
           onClick={() => setIsOpen(true)}
+          style={styles.hamburger}
         >
           <Menu />
         </IconButton>
@@ -97,14 +98,21 @@ const MobileDrawer = () => {
                   flexDirection: "column",
                 }}
               >
-                <FontAwesomeIcon
-                  icon={item.icon}
-                  style={{ fontSize: "20px" }}
-                />
                 <NavLink
                   to={item.path}
-                  style={{ textDecoration: "none", color: "black" }}
+                  style={{
+                    textDecoration: "none",
+                    color: "black",
+                    display: "flex",
+                    flexDirection: "column",
+                    gap: 10,
+                  }}
+                  onClick={() => setIsOpen(false)}
                 >
+                  <FontAwesomeIcon
+                    icon={item.icon}
+                    style={{ fontSize: "20px" }}
+                  />
                   {item.title}
                 </NavLink>
               </ListItemButton>
@@ -118,7 +126,8 @@ const MobileDrawer = () => {
 
 const styles = {
   hamburger: {
-    padding: "20px",
+    padding: "10px",
+    margin: "15px",
   },
 };
 

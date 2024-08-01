@@ -1,10 +1,8 @@
-import MinimalFileInputTest from "../components/FormComponents/MinimalFileInputTest";
-
 function Dashboard() {
   return (
     <main>
       <h1>Home</h1>
-      <MinimalFileInputTest />
+      <h3>Gajacha</h3>
     </main>
   );
 }

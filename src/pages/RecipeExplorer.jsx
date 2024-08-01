@@ -1,5 +1,7 @@
+import ProductSearch from "../components/Product/ProductSearch";
+
 const RecipeExplorer = () => {
-  return <h1>Recipe Explorer</h1>;
+  return <ProductSearch />;
 };
 
 export default RecipeExplorer;
