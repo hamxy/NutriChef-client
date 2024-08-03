@@ -1,13 +1,8 @@
-import axios from "axios";
-const API_URL = "http://localhost:3000/product";
+import axiosInstance from "./axiosInstance";
 
 const searchProducts = async (keyword) => {
   try {
-    const response = await axios.post(
-      `${API_URL}/search`,
-      { keyword },
-      { withCredentials: true }
-    );
+    const response = await axiosInstance.post("/product/search", { keyword });
     return response.data;
   } catch (error) {
     console.error("Error fetching product", error);
