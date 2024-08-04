@@ -1,7 +1,8 @@
-import ProductSearch from "../components/Product/ProductSearch";
+// import ProductSearch from "../components/Product/ProductSearch";
+import RecipeCreationForm from "../components/recipe/RecipeCreationForm";
 
 const RecipeExplorer = () => {
-  return <ProductSearch />;
+  return <RecipeCreationForm />;
 };
 
 export default RecipeExplorer;

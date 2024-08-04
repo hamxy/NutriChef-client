@@ -1,0 +1,38 @@
+/* Import variables */
+@import url('./variables.css');
+
+/* Heading levels based on the 1.618 rule */
+h1 {
+  font-size: calc(var(--font-size-base) * 4.23);
+  font-weight: var(--font-weight-bold);
+}
+
+h2 {
+  font-size: calc(var(--font-size-base) * 2.62);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-primary);
+}
+
+h3 {
+  font-size: calc(var(--font-size-base) * 1.618);
+  font-weight: var(--font-weight-medium);
+}
+
+h4 {
+  font-size: calc(var(--font-size-base) * 1);
+  font-weight: var(--font-weight-regular);
+}
+
+h5 {
+  font-size: calc(var(--font-size-base) / 1.618);
+  font-weight: var(--font-weight-regular);
+}
+
+h6 {
+  font-size: calc(var(--font-size-base) / (1.618 * 1.618));
+  font-weight: var(--font-weight-regular);
+}
+
+p {
+  font-weight: var(--font-weight-regular);
+}

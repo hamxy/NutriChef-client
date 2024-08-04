@@ -147,7 +147,7 @@ const Profile = () => {
         )) || (
           <Avatar
             alt="Profile"
-            src={`http://localhost:3000/uploads/placeholder.jpg`}
+            src={`http://localhost:3000/uploads/placeholder.png`}
             sx={{ width: 200, height: 200, mb: 2 }}
           />
         )}

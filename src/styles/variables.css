@@ -1,0 +1,22 @@
+@import url('https://fonts.googleapis.com/css2?family=Titillium+Web:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700&display=swap');
+
+:root {
+    --font-family: "Titillium Web", sans-serif;
+    --font-size-base: 1rem; /* Base font size */
+    --font-weight-regular: 300;
+    --font-weight-medium: 400;
+    --font-weight-bold: 600;
+    
+    /* Colors */
+    --color-white: #f8fafd;
+    --color-blue: #154eb8;
+    --color-black: #151515;
+    --color-orange: #ffc145;
+    --color-salmon: #ff7e3d;
+    --color-light-gray: #ebebeb;
+    --color-dark-gray: #8b8b8b;
+    
+    /* Primary color for headings */
+    --color-primary: var(--color-salmon);
+  }
+  

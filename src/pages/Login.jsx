@@ -1,7 +1,7 @@
 import "./Login.css";
 import Image from "../components/Image";
 import logo from "../assets/images/authPhoto.jpg";
-import LoginForm from "../components/FormComponents/LoginForm";
+import LoginForm from "../components/forms/LoginForm";
 
 function Login() {
   return (

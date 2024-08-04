@@ -1,5 +1,5 @@
 import { Outlet } from "react-router-dom";
-import MainNavigation from "../components/MainNavigation/MainNavigation";
+import MainNavigation from "../components/layout/header/Header";
 import { useMediaQuery } from "@mui/material";
 
 function MainLayout() {
@@ -16,7 +16,7 @@ function MainLayout() {
         <MainNavigation />
       </header>
       {/* Main will take ramaining space */}
-      <main style={{ flexGrow: 1 }}>
+      <main style={{ flexGrow: 1, overflow: "auto" }}>
         <Outlet />
       </main>
     </div>

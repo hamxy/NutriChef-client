@@ -1,7 +1,7 @@
 import "./Register.css";
 import logo from "../assets/images/authPhoto.jpg";
 import Image from "../components/Image";
-import RegisterForm from "../components/FormComponents/RegisterForm";
+import RegisterForm from "../components/forms/RegisterForm";
 
 function Register() {
   return (

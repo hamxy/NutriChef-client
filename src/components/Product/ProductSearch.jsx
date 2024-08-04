@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import {
   Modal,
   TextField,
@@ -59,12 +59,25 @@ const ProductSearch = ({
   return (
     <Box>
       <Button variant="contained" onClick={handleOpenModal}>
-        Search Products
+        Add product
       </Button>
       <Modal open={isModalOpen} onClose={handleCloseModal}>
         <Box
-          sx={{ p: 2, bgcolor: "white", mt: "10%", mx: "auto", maxWidth: 500 }}
+          sx={{
+            p: 2,
+            bgcolor: "white",
+            mt: "10vh",
+            mx: "auto",
+            maxWidth: 450,
+            overflowY: "auto",
+            maxHeight: "80vh",
+          }}
         >
+          <Box sx={{ textAlign: "right" }}>
+            <Button variant="contained" onClick={handleCloseModal}>
+              Close
+            </Button>
+          </Box>
           <TextField
             label="Search for a product"
             value={searchTerm}

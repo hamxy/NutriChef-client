@@ -1,0 +1,33 @@
+/* Import variables and heading styles */
+@import url('./variables.css');
+@import url('./headingStyles.css');
+
+/* Global styles */
+html, body, #root {
+  height: 100vh;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+/* Highlighted text */
+::-moz-selection {
+  background: #FFE1CE;
+}
+::-webkit-selection {
+  background: #FFE1CE;
+}
+::selection {
+  background: #FFE1CE;
+}
+
+body {
+  font-family: var(--font-family);
+  font-size: var(--font-size-base);
+  line-height: 1.618;
+  font-weight: var(--font-weight-regular);
+  background-color: var(--color-white);
+  color: var(--color-black);
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}

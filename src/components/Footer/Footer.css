@@ -1,9 +1,0 @@
-footer {
-    background-color: antiquewhite;
-    position: absolute;
-    bottom: 0;
-    width: 100vw;
-    padding: 1em;
-    box-sizing: border-box;
-    /* z-index: 1; */
-}
