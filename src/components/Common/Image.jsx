@@ -1,3 +1,5 @@
+import PropTypes from "prop-types";
+
 const Image = ({ styles, src, alt }) => {
   return (
     <img
@@ -9,8 +11,18 @@ const Image = ({ styles, src, alt }) => {
       }}
       src={src}
       alt={alt}
-    ></img>
+    />
   );
+};
+
+Image.propTypes = {
+  styles: PropTypes.object,
+  src: PropTypes.string.isRequired,
+  alt: PropTypes.string.isRequired,
+};
+
+Image.defaultProps = {
+  styles: {},
 };
 
 export default Image;

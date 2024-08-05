@@ -2,13 +2,6 @@
 @import url('./variables.css');
 @import url('./headingStyles.css');
 
-/* Global styles */
-html, body, #root {
-  height: 100vh;
-  margin: 0;
-  box-sizing: border-box;
-}
-
 /* Highlighted text */
 ::-moz-selection {
   background: #FFE1CE;
@@ -18,6 +11,13 @@ html, body, #root {
 }
 ::selection {
   background: #FFE1CE;
+}
+
+/* Global styles */
+html, body, #root {
+  height: 100vh;
+  margin: 0;
+  box-sizing: border-box;
 }
 
 body {

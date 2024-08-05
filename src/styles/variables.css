@@ -17,6 +17,7 @@
     --color-dark-gray: #8b8b8b;
     
     /* Primary color for headings */
-    --color-primary: var(--color-salmon);
+    --color-primary-orange: var(--color-orange);
+    --color-primary-salmon: var(--color-salmon);
   }
   
