@@ -1,23 +1,65 @@
-@import url('https://fonts.googleapis.com/css2?family=Titillium+Web:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Titillium+Web:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700&display=swap");
 
 :root {
-    --font-family: "Titillium Web", sans-serif;
-    --font-size-base: 1rem; /* Base font size */
-    --font-weight-regular: 300;
-    --font-weight-medium: 400;
-    --font-weight-bold: 600;
-    
-    /* Colors */
-    --color-white: #f8fafd;
-    --color-blue: #154eb8;
-    --color-black: #151515;
-    --color-orange: #ffc145;
-    --color-salmon: #ff7e3d;
-    --color-light-gray: #ebebeb;
-    --color-dark-gray: #8b8b8b;
-    
-    /* Primary color for headings */
-    --color-primary-orange: var(--color-orange);
-    --color-primary-salmon: var(--color-salmon);
+  --font-family: "Titillium Web", sans-serif;
+  --font-size-base: 1rem; /* Base font size */
+  --font-weight-regular: 300;
+  --font-weight-medium: 400;
+  --font-weight-bold: 600;
+
+  /* Colors - for reference */
+  /* --color-orange: #ff7e3d;
+  --color-xanthous: #ffc145;
+  --color-champagne-pink: #ffe1ce;
+  --color-deep-sky-blue: #3dbeff;
+  --color-peen-blue: #151755;
+  --color-black: #111111;
+  --color-white: #fffcfa;
+  --color-light-gray: #ebebeb;
+  --color-dark-gray: #8b8b8b; */
+
+  /* Light theme colors */
+  --color-primary: #ff7e3d;
+  --color-primary-alt: #ffc145;
+  --color-secondary: #3dbeff;
+  --color-secondary-alt: #151755;
+  --color-accent: #ffe1ce;
+  --color-background: #fdf4ef;
+  --color-text: #111111;
+  --color-heading: var(--color-primary);
+  --color-link: var(--color-secondary);
+
+  /* Dark theme */
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --color-primary: #ffc145;
+      --color-primary-alt: #ff7e3d;
+      --color-secondary: #151755;
+      --color-secondary-alt: #3dbeff;
+      --color-accent: #111111;
+      --color-background: #0a0a0a;
+      --color-text: #fdf4ef;
+      --color-heading: var(--color-primary);
+      --color-link: var(--color-secondary);
+    }
   }
-  
+
+  /* Explicit dark theme class (if the user toggles manually) */
+  .dark-theme {
+    --color-primary: #ffc145;
+    --color-primary-alt: #ff7e3d;
+    --color-secondary: #151755;
+    --color-secondary-alt: #3dbeff;
+    --color-accent: #111111;
+    --color-background: #1c1c1c;
+    --color-text: #d8cdc7;
+    --color-heading: var(--color-primary);
+    --color-link: var(--color-secondary);
+  }
+
+  /* Breakpoints */
+  --breakpoint-mobile: 600px;
+  --breakpoint-tablet: 768px;
+  --breakpoint-desktop: 1024px;
+  --breakpoint-large-desktop: 1440px;
+}
