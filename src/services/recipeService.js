@@ -21,3 +21,8 @@ export const getRecipes = async (page, limit, searchTerm, filter) => {
     throw error;
   }
 };
+
+export const getRecipeById = async (id) => {
+  const response = await axiosInstance.get(`/recipe/${id}`);
+  return response.data;
+};

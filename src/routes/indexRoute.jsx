@@ -8,6 +8,7 @@ import Dashboard from "../Pages/Dashboard";
 import Error from "../Pages/Error";
 import Profile from "../Pages/Profile";
 import RecipeExplorer from "../Pages/RecipeExplorer";
+import RecipePage from "../components/Recipe/RecipePage";
 
 const router = createBrowserRouter([
   {
@@ -18,6 +19,7 @@ const router = createBrowserRouter([
       { path: "/", element: <Dashboard /> },
       { path: "profile", element: <Profile /> },
       { path: "recipes", element: <RecipeExplorer /> },
+      { path: "recipes/:id", element: <RecipePage /> },
     ],
   },
   {

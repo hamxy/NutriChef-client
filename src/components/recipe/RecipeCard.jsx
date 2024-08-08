@@ -1,8 +1,15 @@
 import { Card, CardContent, Typography, CardMedia } from "@mui/material";
+import { useNavigate } from "react-router-dom";
 
 const RecipeCard = ({ recipe }) => {
+  const navigate = useNavigate();
+
+  const handleCardClick = () => {
+    navigate(`/recipes/${recipe._id}`);
+  };
+
   return (
-    <Card>
+    <Card onClick={handleCardClick} style={{ cursor: "pointer" }}>
       {recipe.photo ? (
         <CardMedia
           component="img"
