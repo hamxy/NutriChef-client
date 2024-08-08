@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 
 const Section = styled.section`
   margin: 0;
-  padding: 1em;
+  flex: 1;
   text-align: ${({ align }) => align || "left"};
 `;
 
@@ -19,7 +19,7 @@ const Input = styled.input`
   width: 100%;
   text-align: center;
   margin-top: 0.5em;
-  border: 1px solid var(--color-orange);
+  border: 1px solid var(--color-primary);
   border-radius: 15px;
 
   &:focus {
@@ -27,7 +27,16 @@ const Input = styled.input`
   }
 `;
 
-const FormField = ({ label, type, name, id, value, onChange, required }) => {
+const FormField = ({
+  label,
+  type,
+  name,
+  id,
+  value,
+  onChange,
+  required,
+  autoComplete,
+}) => {
   return (
     <Section>
       <Label htmlFor={id}>{label}</Label>
@@ -38,6 +47,7 @@ const FormField = ({ label, type, name, id, value, onChange, required }) => {
         value={value}
         onChange={onChange}
         required={required}
+        autoComplete={autoComplete}
       />
     </Section>
   );
@@ -51,6 +61,7 @@ FormField.propTypes = {
   value: PropTypes.string,
   onChange: PropTypes.func.isRequired,
   required: PropTypes.bool,
+  autoComplete: PropTypes.bool,
 };
 
 FormField.defaultProps = {

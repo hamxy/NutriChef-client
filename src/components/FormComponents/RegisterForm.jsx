@@ -4,18 +4,41 @@ import { Snackbar } from "@mui/joy";
 import styled from "styled-components";
 import { register } from "../../services/authService";
 import FormField from "../Common/FormField";
+import Button from "../Common/Button";
 
 const Form = styled.form`
-  width: 90%;
+  width: 70%;
   padding: 3em auto;
+
+  @media (min-width: var(--breakpoint-tablet)) {
+    width: 70%; /* Adjust width for tablets */
+  }
+
+  @media (min-width: var(--breakpoint-desktop)) {
+    width: 60%; /* Adjust width for larger desktops */
+  }
+
+  @media (min-width: var(--breakpoint-large-desktop)) {
+    width: 50%; /* Adjust width for very large desktops */
+  }
 `;
 
 const InlineSection = styled.section`
   display: flex;
+  gap: 1em;
+  flex-direction: column;
   justify-content: space-between;
 
-  align & > div:first-child {
-    margin-right: 1em;
+  @media (min-width: ${({ theme }) => theme.breakpoints.tablet}) {
+    flex-direction: row;
+  }
+
+  @media (min-width: ${({ theme }) => theme.breakpoints.desktop}) {
+    flex-direction: column;
+  }
+
+  @media (min-width: ${({ theme }) => theme.breakpoints.largeDesktop}) {
+    flex-direction: row;
   }
 `;
 
@@ -32,26 +55,9 @@ const Link = styled.a`
 
   &.link {
     margin-left: 0.5em;
-    color: var(--color-primary-salmon);
+    color: var(--color-primary);
     font-weight: 600;
-  }
-`;
-
-const Button = styled.button`
-  margin-top: 2em;
-  background-color: var(--color-orange);
-  border: 1px solid var(--color-orange);
-  border-radius: 15px;
-  color: white;
-  padding: 1rem 0;
-  width: 100%;
-  font-size: 1.1em;
-  font-weight: 500;
-  transition: background-color 0.3s;
-
-  &:hover {
-    cursor: pointer;
-    background-color: var(--color-salmon);
+    text-decoration: none;
   }
 `;
 
@@ -62,12 +68,14 @@ function RegisterForm() {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [registerFailed, setRegisterFailed] = useState(false);
+  const [message, setMessage] = useState("");
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     if (password !== confirmPassword) {
+      setMessage("Passwords do not match");
       setRegisterFailed(true);
       return;
     }
@@ -93,7 +101,7 @@ function RegisterForm() {
         color="warning"
         onClose={handleSnackClose}
       >
-        Registration failed. Please check your details and try again.
+        {message}
       </Snackbar>
       <InlineSection>
         <FormField
@@ -104,6 +112,7 @@ function RegisterForm() {
           value={name}
           onChange={(e) => setName(e.target.value)}
           required
+          autoComplete={false}
         />
         <FormField
           label="Surname"
@@ -113,6 +122,7 @@ function RegisterForm() {
           value={surname}
           onChange={(e) => setSurname(e.target.value)}
           required
+          autoComplete={false}
         />
       </InlineSection>
       <FormField
@@ -123,6 +133,7 @@ function RegisterForm() {
         value={email}
         onChange={(e) => setEmail(e.target.value)}
         required
+        autoComplete={false}
       />
       <FormField
         label="Password"
@@ -132,6 +143,7 @@ function RegisterForm() {
         value={password}
         onChange={(e) => setPassword(e.target.value)}
         required
+        autoComplete={false}
       />
       <FormField
         label="Confirm Password"
@@ -141,8 +153,11 @@ function RegisterForm() {
         value={confirmPassword}
         onChange={(e) => setConfirmPassword(e.target.value)}
         required
+        autoComplete={false}
       />
-      <Button type="submit">Sign Up</Button>
+      <Button type="submit" style={{ marginTop: "2em" }}>
+        Sign Up
+      </Button>
       <Section align="center">
         <p>
           Already have an account?

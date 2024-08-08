@@ -1,5 +1,5 @@
 import { Outlet } from "react-router-dom";
-import MainNavigation from "../components/layout/header/Header";
+import MainNavigation from "../components/Layout/Header/Header";
 import { useMediaQuery } from "@mui/material";
 
 function MainLayout() {

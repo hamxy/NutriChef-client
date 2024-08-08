@@ -26,7 +26,7 @@ const Box = styled.div`
 const Aside = styled.aside`
   display: none;
 
-  @media (min-width: 900px) {
+  @media (min-width: ${({ theme }) => theme.breakpoints.desktop}) {
     display: block;
     width: 50vw;
     height: 100vh;

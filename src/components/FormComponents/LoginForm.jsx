@@ -4,6 +4,7 @@ import { Snackbar } from "@mui/joy";
 import styled from "styled-components";
 import FormField from "../Common/FormField";
 import { login } from "../../services/authService";
+import Button from "../Common/Button";
 
 const Form = styled.form`
   width: 90%;
@@ -43,26 +44,8 @@ const Link = styled.a`
 
   &.link {
     margin-left: 0.5em;
-    color: var(--color-primary-salmon);
+    color: var(--color-primary);
     font-weight: 600;
-  }
-`;
-
-const Button = styled.button`
-  background-color: var(--color-orange);
-  border: 1px solid var(--color-orange);
-  margin-top: 0;
-  border-radius: 15px;
-  color: white;
-  padding: 1rem 0;
-  width: 100%;
-  font-size: 1.1em;
-  font-weight: 500;
-  transition: background-color 0.3s;
-
-  &:hover {
-    cursor: pointer;
-    background-color: var(--color-salmon);
   }
 `;
 

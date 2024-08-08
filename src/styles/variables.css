@@ -7,25 +7,15 @@
   --font-weight-medium: 400;
   --font-weight-bold: 600;
 
-  /* Colors - for reference */
-  /* --color-orange: #ff7e3d;
-  --color-xanthous: #ffc145;
-  --color-champagne-pink: #ffe1ce;
-  --color-deep-sky-blue: #3dbeff;
-  --color-peen-blue: #151755;
-  --color-black: #111111;
-  --color-white: #fffcfa;
-  --color-light-gray: #ebebeb;
-  --color-dark-gray: #8b8b8b; */
-
   /* Light theme colors */
   --color-primary: #ff7e3d;
   --color-primary-alt: #ffc145;
-  --color-secondary: #3dbeff;
-  --color-secondary-alt: #151755;
+  --color-secondary: #fc4949;
+  --color-secondary-alt: #c5fa9d;
   --color-accent: #ffe1ce;
-  --color-background: #fdf4ef;
+  --color-background: #fffbfa;
   --color-text: #111111;
+  --color-text-white: #fffbfa;
   --color-heading: var(--color-primary);
   --color-link: var(--color-secondary);
 
@@ -56,10 +46,4 @@
     --color-heading: var(--color-primary);
     --color-link: var(--color-secondary);
   }
-
-  /* Breakpoints */
-  --breakpoint-mobile: 600px;
-  --breakpoint-tablet: 768px;
-  --breakpoint-desktop: 1024px;
-  --breakpoint-large-desktop: 1440px;
 }

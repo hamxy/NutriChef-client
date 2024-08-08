@@ -12,7 +12,7 @@ import {
   TableRow,
   Paper,
 } from "@mui/material";
-import ProductSearch from "../product/ProductSearch";
+import ProductSearch from "../Product/ProductSearch";
 import { createRecipe } from "../../services/recipeService";
 
 const RecipeCreationForm = () => {

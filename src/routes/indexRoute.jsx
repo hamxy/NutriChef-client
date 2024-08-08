@@ -1,13 +1,13 @@
 import { createBrowserRouter } from "react-router-dom";
-import MainLayout from "../layouts/MainLayout";
-import AuthLayout from "../layouts/AuthLayout";
-import Login from "../pages/Login";
-import Register from "../pages/Register";
-import Logout from "../pages/Logout";
-import Dashboard from "../pages/Dashboard";
-import Error from "../pages/Error";
-import Profile from "../pages/Profile";
-import RecipeExplorer from "../pages/RecipeExplorer";
+import MainLayout from "../Layouts/MainLayout";
+import AuthLayout from "../Layouts/AuthLayout";
+import Login from "../Pages/Login";
+import Register from "../Pages/Register";
+import Logout from "../Pages/Logout";
+import Dashboard from "../Pages/Dashboard";
+import Error from "../Pages/Error";
+import Profile from "../Pages/Profile";
+import RecipeExplorer from "../Pages/RecipeExplorer";
 
 const router = createBrowserRouter([
   {

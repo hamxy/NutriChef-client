@@ -1,5 +1,5 @@
 // import ProductSearch from "../components/Product/ProductSearch";
-import RecipeCreationForm from "../components/recipe/RecipeCreationForm";
+import RecipeCreationForm from "../components/Recipe/RecipeCreationForm";
 
 const RecipeExplorer = () => {
   return <RecipeCreationForm />;
