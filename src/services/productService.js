@@ -10,4 +10,9 @@ const searchProducts = async (keyword) => {
   }
 };
 
-export { searchProducts };
+const createProduct = async (productData) => {
+  const response = await axiosInstance.post("/product/create", productData);
+  return response.data.product;
+};
+
+export { searchProducts, createProduct };

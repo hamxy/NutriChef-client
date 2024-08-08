@@ -117,7 +117,6 @@ const RecipeCreationForm = () => {
           value={title}
           onChange={(e) => setTitle(e.target.value)}
           fullWidth
-          margin="normal"
           autoComplete="off"
         />
         <TextField
@@ -125,7 +124,6 @@ const RecipeCreationForm = () => {
           value={description}
           onChange={(e) => setDescription(e.target.value)}
           fullWidth
-          margin="normal"
           multiline
           rows={3}
           autoComplete="off"
@@ -144,7 +142,6 @@ const RecipeCreationForm = () => {
           label="Course"
           onChange={handleCourseSelection}
           fullWidth
-          margin="normal"
         >
           <MenuItem value={"breakfast"}>Breakfast</MenuItem>
           <MenuItem value={"lunch"}>Lunch</MenuItem>
@@ -161,7 +158,6 @@ const RecipeCreationForm = () => {
               value={step}
               onChange={(e) => handleStepChange(e, index)}
               fullWidth
-              margin="normal"
               autoComplete="off"
             />
           </Box>
@@ -183,7 +179,13 @@ const RecipeCreationForm = () => {
         <Typography variant="h6" gutterBottom sx={{ mt: 4 }}>
           Products
         </Typography>
+        {/* 
+        ..............................................
+        :::::::    Search for a product     ::::::::::
+        ..............................................
+        */}
         <ProductSearch onAddProduct={handleAddProduct} />
+
         <TableContainer component={Paper} sx={{ mt: 2 }}>
           <Table>
             <TableHead>
@@ -204,7 +206,6 @@ const RecipeCreationForm = () => {
                         handleProductQuantityChange(index, e.target.value)
                       }
                       sx={{ width: "100px" }}
-                      margin="normal"
                       autoComplete="off"
                       InputProps={{ inputProps: { min: 0 } }} // To ensure quantity is non-negative
                     />
@@ -220,7 +221,6 @@ const RecipeCreationForm = () => {
           value={preparationTime}
           onChange={handlePreparationTimeChange}
           fullWidth
-          margin="normal"
           autoComplete="off"
           sx={{ mt: 2 }}
           InputProps={{ inputProps: { min: 0 } }} // To ensure preparation time is non-negative
@@ -231,13 +231,12 @@ const RecipeCreationForm = () => {
           value={cookingTime}
           onChange={handleCookingTimeChange}
           fullWidth
-          margin="normal"
           autoComplete="off"
           sx={{ mt: 2 }}
           InputProps={{ inputProps: { min: 0 } }} // To ensure preparation time is non-negative
         />
         <Button
-          type="submit"
+          onClick={handleSubmit}
           variant="contained"
           color="primary"
           sx={{ mt: 2 }}

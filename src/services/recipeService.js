@@ -1,15 +1,23 @@
-import axios from "axios";
-
-const API_URL = "http://localhost:3000";
+import axiosInstance from "./axiosInstance";
 
 export const createRecipe = async (recipeData) => {
   try {
-    const response = await axios.post(`${API_URL}/recipe/create`, recipeData, {
-      withCredentials: true, // Include credentials (cookies)
-    });
+    const response = await axiosInstance.post(`/recipe/create`, recipeData);
     return response;
   } catch (error) {
     console.error("Error creating recipe", error);
+    throw error;
+  }
+};
+
+export const getRecipes = async (page, limit, searchTerm, filter) => {
+  try {
+    const response = await axiosInstance.get("/recipe", {
+      params: { page, limit, search: searchTerm, course: filter },
+    });
+    return response.data;
+  } catch (error) {
+    console.error("Error fetching recipes:", error);
     throw error;
   }
 };

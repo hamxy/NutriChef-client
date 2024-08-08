@@ -1,10 +1,7 @@
+import RecipeCreationForm from "../components/Recipe/RecipeCreationForm";
+
 function Dashboard() {
-  return (
-    <main>
-      <h1>Home</h1>
-      <h3>Gajacha</h3>
-    </main>
-  );
+  return <RecipeCreationForm />;
 }
 
 export default Dashboard;

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import {
   Modal,
   TextField,
@@ -8,12 +8,14 @@ import {
   Button,
   Typography,
 } from "@mui/material";
-import { searchProducts } from "../../services/productService";
+import { searchProducts, createProduct } from "../../services/productService";
+import ProductCreationForm from "./ProductCreationForm";
 
 const ProductSearch = ({ onAddProduct }) => {
   const [searchTerm, setSearchTerm] = useState("");
   const [searchResults, setSearchResults] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isCreationModalOpen, setIsCreationModalOpen] = useState(false);
   const [searchPerformed, setSearchPerformed] = useState(false);
 
   const handleSearchChange = async (e) => {
@@ -43,14 +45,26 @@ const ProductSearch = ({ onAddProduct }) => {
     setSearchResults([]);
   };
 
-  const handleAddProduct = (product) => {
-    onAddProduct(product);
-    handleCloseModal();
+  const handleOpenCreationModal = () => {
+    setIsCreationModalOpen(true);
   };
 
-  const handleAddNewProduct = () => {
-    onAddNewProduct(searchTerm);
-    handleCloseModal();
+  const handleCloseCreationModal = () => {
+    setIsCreationModalOpen(false);
+  };
+
+  const handleAddProduct = (product) => {
+    onAddProduct(product);
+    handleCloseCreationModal();
+  };
+
+  const handleAddNewProduct = async (productData) => {
+    try {
+      const createdProduct = await createProduct(productData);
+      handleAddProduct(createdProduct);
+    } catch (error) {
+      console.error("Error creating product:", error);
+    }
   };
 
   return (
@@ -115,7 +129,7 @@ const ProductSearch = ({ onAddProduct }) => {
               : searchPerformed && (
                   <Typography variant="body1">
                     Nothing found. Do you want to add a product?
-                    <Button variant="text" onClick={handleAddNewProduct}>
+                    <Button variant="text" onClick={handleOpenCreationModal}>
                       Add Product
                     </Button>
                   </Typography>
@@ -124,11 +138,26 @@ const ProductSearch = ({ onAddProduct }) => {
           {searchResults.length > 0 && (
             <Typography variant="body1">
               Didn't find your product?
-              <Button variant="text" onClick={handleAddNewProduct}>
+              <Button variant="text" onClick={handleOpenCreationModal}>
                 Add Product
               </Button>
             </Typography>
           )}
+        </Box>
+      </Modal>
+      <Modal open={isCreationModalOpen} onClose={handleCloseCreationModal}>
+        <Box
+          sx={{
+            p: 2,
+            bgcolor: "white",
+            mt: "10vh",
+            mx: "auto",
+            maxWidth: 450,
+            overflowY: "auto",
+            maxHeight: "80vh",
+          }}
+        >
+          <ProductCreationForm onAddProduct={handleAddNewProduct} />
         </Box>
       </Modal>
     </Box>
