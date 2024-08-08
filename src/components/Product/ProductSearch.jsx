@@ -10,10 +10,7 @@ import {
 } from "@mui/material";
 import { searchProducts } from "../../services/productService";
 
-const ProductSearch = ({
-  onAddProduct = () => {},
-  onAddNewProduct = () => {},
-}) => {
+const ProductSearch = ({ onAddProduct }) => {
   const [searchTerm, setSearchTerm] = useState("");
   const [searchResults, setSearchResults] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);

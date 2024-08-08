@@ -25,6 +25,7 @@ const RecipeCreationForm = () => {
   const [products, setProducts] = useState([]);
   const [preparationTime, setPreparationTime] = useState(0);
   const [cookingTime, setCookingTime] = useState(0);
+  const [photoFile, setPhotoFile] = useState(null);
 
   const handleCourseSelection = (e) => {
     setCourse(e.target.value);
@@ -48,7 +49,10 @@ const RecipeCreationForm = () => {
   };
 
   const handleAddProduct = (product) => {
-    setProducts([...products, { ...product, quantity: 100 }]);
+    setProducts([
+      ...products,
+      { product: product._id, name: product.name, quantity: 100 },
+    ]);
   };
 
   const handleProductQuantityChange = (index, quantity) => {
@@ -59,7 +63,6 @@ const RecipeCreationForm = () => {
 
   const handlePreparationTimeChange = (e) => {
     const value = e.target.value;
-    // Ensure the input value is a number
     if (!isNaN(value)) {
       setPreparationTime(value);
     }
@@ -67,25 +70,36 @@ const RecipeCreationForm = () => {
 
   const handleCookingTimeChange = (e) => {
     const value = e.target.value;
-    // Ensure the input value is a number
     if (!isNaN(value)) {
       setCookingTime(value);
     }
   };
 
+  const handlePhotoChange = (e) => {
+    setPhotoFile(e.target.files[0]);
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const recipeData = {
-      title,
-      description,
-      course,
-      steps,
-      products,
-      preparationTime: Number(preparationTime),
-      cookingTime: Number(cookingTime), // Ensure the value is a number
-    };
+    const formData = new FormData();
+    formData.append("title", title);
+    formData.append("description", description);
+    formData.append("course", course);
+    formData.append("steps", JSON.stringify(steps));
+    formData.append(
+      "products",
+      JSON.stringify(
+        products.map(({ product, quantity }) => ({ product, quantity }))
+      )
+    );
+    formData.append("preparationTime", preparationTime);
+    formData.append("cookingTime", cookingTime);
+    if (photoFile) {
+      formData.append("photo", photoFile);
+    }
+
     try {
-      const response = await createRecipe(recipeData);
+      const response = await createRecipe(formData);
       console.log("Recipe created successfully:", response);
     } catch (error) {
       console.error("Error creating recipe:", error);
@@ -116,6 +130,10 @@ const RecipeCreationForm = () => {
           rows={3}
           autoComplete="off"
         />
+        <Typography variant="h6" gutterBottom sx={{ mt: 4 }}>
+          Upload Photo
+        </Typography>
+        <input type="file" onChange={handlePhotoChange} />
         <Typography variant="h6" gutterBottom sx={{ mt: 2 }}>
           Course
         </Typography>
@@ -125,6 +143,8 @@ const RecipeCreationForm = () => {
           value={course}
           label="Course"
           onChange={handleCourseSelection}
+          fullWidth
+          margin="normal"
         >
           <MenuItem value={"breakfast"}>Breakfast</MenuItem>
           <MenuItem value={"lunch"}>Lunch</MenuItem>
