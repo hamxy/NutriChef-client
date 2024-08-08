@@ -96,6 +96,7 @@ const Profile = () => {
 
     try {
       const response = await uploadPhoto(formData);
+      console.log(response.status);
       const data = response.data;
 
       if (response.status === 200) {
@@ -241,3 +242,5 @@ const Profile = () => {
 };
 
 export default Profile;
+
+// Wednesday 10:30

@@ -26,7 +26,7 @@ const uploadPhoto = async (formData) => {
       "/profile/upload-photo",
       formData
     );
-    return response.data;
+    return response;
   } catch (error) {
     console.error("Error uploading photo", error);
     throw error;
@@ -34,3 +34,5 @@ const uploadPhoto = async (formData) => {
 };
 
 export { getProfile, updateProfile, uploadPhoto };
+
+/// tuesday 11:00 - rabies vaccine for Animal Health Certificate
