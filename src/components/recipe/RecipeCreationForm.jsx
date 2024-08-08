@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import {
   TextField,
   Button,
@@ -14,6 +15,7 @@ import {
   Select,
   MenuItem,
 } from "@mui/material";
+import { Snackbar } from "@mui/joy";
 import ProductSearch from "../Product/ProductSearch";
 import { createRecipe } from "../../services/recipeService";
 
@@ -26,6 +28,8 @@ const RecipeCreationForm = () => {
   const [preparationTime, setPreparationTime] = useState(0);
   const [cookingTime, setCookingTime] = useState(0);
   const [photoFile, setPhotoFile] = useState(null);
+  const [openSnackbar, setOpenSnackbar] = useState(false);
+  const navigate = useNavigate();
 
   const handleCourseSelection = (e) => {
     setCourse(e.target.value);
@@ -79,6 +83,10 @@ const RecipeCreationForm = () => {
     setPhotoFile(e.target.files[0]);
   };
 
+  const handleSnackClose = () => {
+    navigate("/recipes");
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     const formData = new FormData();
@@ -101,6 +109,7 @@ const RecipeCreationForm = () => {
     try {
       const response = await createRecipe(formData);
       console.log("Recipe created successfully:", response);
+      setOpenSnackbar(true);
     } catch (error) {
       console.error("Error creating recipe:", error);
     }
@@ -243,6 +252,14 @@ const RecipeCreationForm = () => {
         >
           Create Recipe
         </Button>
+        <Snackbar
+          open={openSnackbar}
+          autoHideDuration={2000}
+          color="success"
+          onClose={handleSnackClose}
+        >
+          Recipe has been created. Redirecting to all recipes.
+        </Snackbar>
       </form>
     </Box>
   );

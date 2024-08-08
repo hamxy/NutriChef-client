@@ -56,6 +56,7 @@ const ProductSearch = ({ onAddProduct }) => {
   const handleAddProduct = (product) => {
     onAddProduct(product);
     handleCloseCreationModal();
+    handleCloseModal();
   };
 
   const handleAddNewProduct = async (productData) => {
