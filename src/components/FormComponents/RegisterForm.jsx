@@ -23,6 +23,12 @@ const Form = styled.form`
   }
 `;
 
+const Container = styled.div`
+  display: flex;
+  justify-content: center; /* center, flex-start, flex-end, space-between, space-around, space-evenly */
+  align-items: center;
+`;
+
 const InlineSection = styled.section`
   display: flex;
   gap: 1em;
@@ -112,7 +118,7 @@ function RegisterForm() {
           value={name}
           onChange={(e) => setName(e.target.value)}
           required
-          autoComplete={false}
+          autoComplete={"off"}
         />
         <FormField
           label="Surname"
@@ -122,7 +128,7 @@ function RegisterForm() {
           value={surname}
           onChange={(e) => setSurname(e.target.value)}
           required
-          autoComplete={false}
+          autoComplete={"off"}
         />
       </InlineSection>
       <FormField
@@ -133,7 +139,7 @@ function RegisterForm() {
         value={email}
         onChange={(e) => setEmail(e.target.value)}
         required
-        autoComplete={false}
+        autoComplete={"off"}
       />
       <FormField
         label="Password"
@@ -143,7 +149,7 @@ function RegisterForm() {
         value={password}
         onChange={(e) => setPassword(e.target.value)}
         required
-        autoComplete={false}
+        autoComplete={"off"}
       />
       <FormField
         label="Confirm Password"
@@ -153,11 +159,14 @@ function RegisterForm() {
         value={confirmPassword}
         onChange={(e) => setConfirmPassword(e.target.value)}
         required
-        autoComplete={false}
+        autoComplete={"off"}
       />
-      <Button type="submit" style={{ marginTop: "2em" }}>
-        Sign Up
-      </Button>
+
+      <Container>
+        <Button type="submit" style={{ marginTop: "2em" }}>
+          Sign Up
+        </Button>
+      </Container>
       <Section align="center">
         <p>
           Already have an account?

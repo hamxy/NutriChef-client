@@ -18,7 +18,7 @@ const Image = ({ styles, src, alt }) => {
 Image.propTypes = {
   styles: PropTypes.object,
   src: PropTypes.string.isRequired,
-  alt: PropTypes.string.isRequired,
+  alt: PropTypes.string,
 };
 
 Image.defaultProps = {

@@ -11,7 +11,9 @@ import Modal from "@mui/material/Modal";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Avatar from "@mui/material/Avatar";
-import Button from "@mui/material/Button";
+import Button from "../components/Common/Button";
+import { Button as MuiButton } from "@mui/material";
+import FormField from "../components/Common/FormField";
 
 const Alert = React.forwardRef(function Alert(props, ref) {
   return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
@@ -159,9 +161,9 @@ const Profile = () => {
           {profile.email}
         </Typography>
 
-        <Button variant="text" color="primary" onClick={handleModalOpen}>
+        <MuiButton variant="text" color="primary" onClick={handleModalOpen}>
           Edit Profile
-        </Button>
+        </MuiButton>
       </Box>
 
       <Modal
@@ -183,30 +185,29 @@ const Profile = () => {
             p: 4,
           }}
         >
-          <Typography id="edit-profile-modal" variant="h6" component="h2">
-            Edit Profile
-          </Typography>
+          <h2>Edit Profile</h2>
           <form onSubmit={handleSubmit}>
-            <div>
-              <label>Name:</label>
-              <input
-                type="text"
-                name="name"
-                value={formData.name}
-                onChange={handleChange}
-              />
-            </div>
-            <div>
-              <label>Surname:</label>
-              <input
-                type="text"
-                name="surname"
-                value={formData.surname}
-                onChange={handleChange}
-              />
-            </div>
-
-            <button type="submit">Update Profile</button>
+            <FormField
+              label={"Name"}
+              type={"text"}
+              name={"name"}
+              id="name"
+              value={formData.name}
+              onChange={handleChange}
+              required
+              autoComplete="off"
+            />
+            <FormField
+              label={"Surname"}
+              type={"text"}
+              name={"surname"}
+              id="surname"
+              value={formData.surname}
+              onChange={handleChange}
+              required
+              autoComplete="off"
+            />
+            <Button type={"submit"}>Update Profile</Button>
           </form>
           <form onSubmit={handlePhotoUpload} style={{ marginTop: "20px" }}>
             <div>

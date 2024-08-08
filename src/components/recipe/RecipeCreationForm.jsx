@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import {
   TextField,
   Button,
@@ -11,6 +11,8 @@ import {
   TableHead,
   TableRow,
   Paper,
+  Select,
+  MenuItem,
 } from "@mui/material";
 import ProductSearch from "../Product/ProductSearch";
 import { createRecipe } from "../../services/recipeService";
@@ -18,9 +20,15 @@ import { createRecipe } from "../../services/recipeService";
 const RecipeCreationForm = () => {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
+  const [course, setCourse] = useState("breakfast");
   const [steps, setSteps] = useState([""]);
   const [products, setProducts] = useState([]);
   const [preparationTime, setPreparationTime] = useState(0);
+  const [cookingTime, setCookingTime] = useState(0);
+
+  const handleCourseSelection = (e) => {
+    setCourse(e.target.value);
+  };
 
   const handleAddStep = () => {
     setSteps([...steps, ""]);
@@ -40,7 +48,7 @@ const RecipeCreationForm = () => {
   };
 
   const handleAddProduct = (product) => {
-    setProducts([...products, { ...product, quantity: 100, unit: "g" }]);
+    setProducts([...products, { ...product, quantity: 100 }]);
   };
 
   const handleProductQuantityChange = (index, quantity) => {
@@ -57,14 +65,24 @@ const RecipeCreationForm = () => {
     }
   };
 
+  const handleCookingTimeChange = (e) => {
+    const value = e.target.value;
+    // Ensure the input value is a number
+    if (!isNaN(value)) {
+      setCookingTime(value);
+    }
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     const recipeData = {
       title,
       description,
+      course,
       steps,
       products,
-      preparationTime: Number(preparationTime), // Ensure the value is a number
+      preparationTime: Number(preparationTime),
+      cookingTime: Number(cookingTime), // Ensure the value is a number
     };
     try {
       const response = await createRecipe(recipeData);
@@ -98,6 +116,21 @@ const RecipeCreationForm = () => {
           rows={3}
           autoComplete="off"
         />
+        <Typography variant="h6" gutterBottom sx={{ mt: 2 }}>
+          Course
+        </Typography>
+        <Select
+          labelId="course"
+          id="course"
+          value={course}
+          label="Course"
+          onChange={handleCourseSelection}
+        >
+          <MenuItem value={"breakfast"}>Breakfast</MenuItem>
+          <MenuItem value={"lunch"}>Lunch</MenuItem>
+          <MenuItem value={"dinner"}>Dinner</MenuItem>
+          <MenuItem value={"snack"}>Snack</MenuItem>
+        </Select>
         <Typography variant="h6" gutterBottom sx={{ mt: 2 }}>
           Steps
         </Typography>
@@ -166,6 +199,17 @@ const RecipeCreationForm = () => {
           type="number"
           value={preparationTime}
           onChange={handlePreparationTimeChange}
+          fullWidth
+          margin="normal"
+          autoComplete="off"
+          sx={{ mt: 2 }}
+          InputProps={{ inputProps: { min: 0 } }} // To ensure preparation time is non-negative
+        />
+        <TextField
+          label="Cooking Time (minutes)"
+          type="number"
+          value={cookingTime}
+          onChange={handleCookingTimeChange}
           fullWidth
           margin="normal"
           autoComplete="off"

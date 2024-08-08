@@ -61,7 +61,7 @@ FormField.propTypes = {
   value: PropTypes.string,
   onChange: PropTypes.func.isRequired,
   required: PropTypes.bool,
-  autoComplete: PropTypes.bool,
+  autoComplete: PropTypes.string,
 };
 
 FormField.defaultProps = {

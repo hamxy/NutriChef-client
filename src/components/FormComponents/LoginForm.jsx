@@ -21,6 +21,12 @@ const Form = styled.form`
   }
 `;
 
+const Container = styled.div`
+  display: flex;
+  justify-content: center; /* center, flex-start, flex-end, space-between, space-around, space-evenly */
+  align-items: center;
+`;
+
 const Section = styled.section`
   margin: 0;
   padding: 1em;
@@ -102,7 +108,9 @@ function LoginForm() {
       <Section align="right">
         <Link href="">Forgot password?</Link>
       </Section>
-      <Button type="submit">Sign In</Button>
+      <Container>
+        <Button type="submit">Sign In</Button>
+      </Container>
       <Section align="center" className="under-btn">
         <p>
           No account?
