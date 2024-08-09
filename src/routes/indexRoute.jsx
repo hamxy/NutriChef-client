@@ -9,6 +9,7 @@ import Error from "../Pages/Error";
 import Profile from "../Pages/Profile";
 import RecipeExplorer from "../Pages/RecipeExplorer";
 import RecipePage from "../components/Recipe/RecipePage";
+import EditRecipeForm from "../components/Recipe/EditRecipe";
 
 const router = createBrowserRouter([
   {
@@ -20,6 +21,7 @@ const router = createBrowserRouter([
       { path: "profile", element: <Profile /> },
       { path: "create-recipe", element: <Dashboard /> },
       { path: "recipes/:id", element: <RecipePage /> },
+      { path: "recipes/edit/:id", element: <EditRecipeForm /> }, // Edit Recipe
     ],
   },
   {

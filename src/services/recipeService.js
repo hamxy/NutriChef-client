@@ -22,6 +22,11 @@ export const getRecipes = async (page, limit, searchTerm, filter) => {
   }
 };
 
+export const updateRecipe = async (id, formData) => {
+  const response = await axiosInstance.put(`/recipe/${id}`, formData);
+  return response.data;
+};
+
 export const deleteRecipe = async (id) => {
   return await axiosInstance.delete(`/recipe/${id}`);
 };

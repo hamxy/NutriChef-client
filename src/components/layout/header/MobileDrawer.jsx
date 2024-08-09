@@ -18,12 +18,12 @@ const MobileDrawer = () => {
   const navigation = [
     {
       title: "Recipe Explorer",
-      path: "/recipes",
+      path: "/",
       icon: "fa-solid fa-utensils",
     },
     {
       title: "Create Recipe",
-      path: "/",
+      path: "/create-recipe",
       icon: "fa-solid fa-gauge",
     },
     {

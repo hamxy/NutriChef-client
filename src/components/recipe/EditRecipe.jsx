@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { useNavigate, useParams } from "react-router-dom";
 import {
   TextField,
   Button,
@@ -18,10 +18,11 @@ import {
 } from "@mui/material";
 import { Snackbar } from "@mui/joy";
 import ProductSearch from "../Product/ProductSearch";
-import { createRecipe } from "../../services/recipeService";
+import { getRecipeById, updateRecipe } from "../../services/recipeService";
 import DeleteIcon from "@mui/icons-material/Delete";
 
-const RecipeCreationForm = () => {
+const EditRecipe = () => {
+  const { id } = useParams();
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [course, setCourse] = useState("breakfast");
@@ -32,6 +33,31 @@ const RecipeCreationForm = () => {
   const [photoFile, setPhotoFile] = useState(null);
   const [openSnackbar, setOpenSnackbar] = useState(false);
   const navigate = useNavigate();
+
+  useEffect(() => {
+    const fetchRecipe = async () => {
+      try {
+        const recipe = await getRecipeById(id);
+        setTitle(recipe.title);
+        setDescription(recipe.description);
+        setCourse(recipe.course);
+        setSteps(recipe.steps);
+        setProducts(
+          recipe.products.map(({ product, quantity }) => ({
+            product: product._id,
+            name: product.name,
+            quantity,
+          }))
+        );
+        setPreparationTime(recipe.preparationTime);
+        setCookingTime(recipe.cookingTime);
+      } catch (error) {
+        console.error("Error fetching recipe:", error);
+      }
+    };
+
+    fetchRecipe();
+  }, [id]);
 
   const handleCourseSelection = (e) => {
     setCourse(e.target.value);
@@ -96,6 +122,7 @@ const RecipeCreationForm = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
     const formData = new FormData();
     formData.append("title", title);
     formData.append("description", description);
@@ -113,19 +140,24 @@ const RecipeCreationForm = () => {
       formData.append("photo", photoFile);
     }
 
+    // Debug: Log FormData entries
+    for (let [key, value] of formData.entries()) {
+      console.log(`${key}: ${value}`);
+    }
+
     try {
-      const response = await createRecipe(formData);
-      console.log("Recipe created successfully:", response);
+      const response = await updateRecipe(id, formData);
+      console.log("Recipe updated successfully:", response);
       setOpenSnackbar(true);
     } catch (error) {
-      console.error("Error creating recipe:", error);
+      console.error("Error updating recipe:", error);
     }
   };
 
   return (
     <Box>
       <Typography variant="h4" gutterBottom>
-        Create a New Recipe
+        Edit Recipe
       </Typography>
       <form onSubmit={handleSubmit}>
         <TextField
@@ -195,11 +227,6 @@ const RecipeCreationForm = () => {
         <Typography variant="h6" gutterBottom sx={{ mt: 4 }}>
           Products
         </Typography>
-        {/* 
-        ..............................................
-        :::::::    Search for a product     ::::::::::
-        ..............................................
-        */}
         <ProductSearch onAddProduct={handleAddProduct} />
 
         <TableContainer component={Paper} sx={{ mt: 2 }}>
@@ -267,7 +294,7 @@ const RecipeCreationForm = () => {
           color="primary"
           sx={{ mt: 2 }}
         >
-          Create Recipe
+          Update Recipe
         </Button>
         <Snackbar
           open={openSnackbar}
@@ -275,11 +302,11 @@ const RecipeCreationForm = () => {
           color="success"
           onClose={handleSnackClose}
         >
-          Recipe has been created. Redirecting to all recipes.
+          Recipe has been updated. Redirecting to all recipes.
         </Snackbar>
       </form>
     </Box>
   );
 };
 
-export default RecipeCreationForm;
+export default EditRecipe;
