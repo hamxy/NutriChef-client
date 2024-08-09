@@ -31,7 +31,8 @@ const RecipeCard = ({ recipe }) => {
           {recipe.title}
         </Typography>
         <Typography variant="body2" color="textSecondary">
-          {recipe.description}
+          {recipe.description.slice(0, 50)}
+          {recipe.description.length > 40 ? "..." : ""}
         </Typography>
       </CardContent>
     </Card>

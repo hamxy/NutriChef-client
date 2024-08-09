@@ -13,14 +13,14 @@ library.add(faGauge, faUtensils, faUser, faRightFromBracket);
 const DesktopSideNav = () => {
   const navigation = [
     {
-      title: "Dashboard",
+      title: "Recipe Explorer",
       path: "/",
-      icon: "fa-solid fa-gauge",
+      icon: "fa-solid fa-utensils",
     },
     {
-      title: "Recipe Explorer",
-      path: "/recipes",
-      icon: "fa-solid fa-utensils",
+      title: "Create Recipe",
+      path: "/create-recipe",
+      icon: "fa-solid fa-gauge",
     },
     {
       title: "Profile",

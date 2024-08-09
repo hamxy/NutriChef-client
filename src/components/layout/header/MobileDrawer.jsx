@@ -17,14 +17,14 @@ const MobileDrawer = () => {
 
   const navigation = [
     {
-      title: "Dashboard",
-      path: "/",
-      icon: "fa-solid fa-gauge",
-    },
-    {
       title: "Recipe Explorer",
       path: "/recipes",
       icon: "fa-solid fa-utensils",
+    },
+    {
+      title: "Create Recipe",
+      path: "/",
+      icon: "fa-solid fa-gauge",
     },
     {
       title: "Profile",

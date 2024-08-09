@@ -24,6 +24,7 @@ const RecipePage = () => {
     const fetchRecipe = async () => {
       try {
         const data = await getRecipeById(id);
+        console.log(data);
         setRecipe(data);
       } catch (error) {
         console.error("Error fetching recipe:", error);
@@ -69,13 +70,17 @@ const RecipePage = () => {
           <Typography variant="h2" gutterBottom>
             {recipe.title}
           </Typography>
+          <Typography variant="subtitle1" color="textSecondary" gutterBottom>
+            <strong>Created by: </strong>
+            {recipe.createdBy.email}
+          </Typography>
           <Typography
             variant="subtitle1"
             color="textSecondary"
             gutterBottom
             mb={5}
           >
-            Course:{" "}
+            <strong>Course:</strong>{" "}
             {recipe.course.charAt(0).toUpperCase() + recipe.course.slice(1)}
           </Typography>
           <Typography variant="body1" gutterBottom mb={7}>

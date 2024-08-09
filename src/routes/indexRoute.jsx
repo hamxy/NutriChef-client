@@ -16,9 +16,9 @@ const router = createBrowserRouter([
     element: <MainLayout />,
     errorElement: <Error />,
     children: [
-      { path: "/", element: <Dashboard /> },
+      { path: "/", element: <RecipeExplorer /> },
       { path: "profile", element: <Profile /> },
-      { path: "recipes", element: <RecipeExplorer /> },
+      { path: "create-recipe", element: <Dashboard /> },
       { path: "recipes/:id", element: <RecipePage /> },
     ],
   },

@@ -5,6 +5,7 @@ import {
   updateProfile,
   uploadPhoto,
 } from "../services/profileService";
+import { deleteRecipe } from "../services/recipeService";
 import Snackbar from "@mui/material/Snackbar";
 import MuiAlert from "@mui/material/Alert";
 import Modal from "@mui/material/Modal";
@@ -12,8 +13,19 @@ import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Avatar from "@mui/material/Avatar";
 import Button from "../components/Common/Button";
-import { Button as MuiButton } from "@mui/material";
+import {
+  Button as MuiButton,
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableRow,
+  IconButton,
+} from "@mui/material";
 import FormField from "../components/Common/FormField";
+import EditIcon from "@mui/icons-material/Edit";
+import DeleteIcon from "@mui/icons-material/Delete";
+import VisibilityIcon from "@mui/icons-material/Visibility";
 
 const Alert = React.forwardRef(function Alert(props, ref) {
   return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
@@ -27,6 +39,7 @@ const Profile = () => {
     surname: "",
     weight: "",
   });
+  const [recipes, setRecipes] = useState([]);
   const [photoFile, setPhotoFile] = useState(null); // State to store the selected file
   const [updateStatus, setUpdateStatus] = useState(null); // Track update status
   const [snackbarOpen, setSnackbarOpen] = useState(false); // Control Snackbar visibility
@@ -42,6 +55,7 @@ const Profile = () => {
         if (data.authenticated) {
           setProfile(data.user);
           setFormData(data.user);
+          setRecipes(data.recipes);
           setLoading(false); // User is authenticated, render profile
         } else {
           navigate("/auth/login"); // Not authenticated, redirect to login
@@ -127,6 +141,25 @@ const Profile = () => {
     setModalOpen(false);
   };
 
+  const handleDelete = async (recipeId) => {
+    if (window.confirm("Are you sure you want to delete this recipe?")) {
+      try {
+        await deleteRecipe(recipeId);
+        setRecipes(recipes.filter((recipe) => recipe._id !== recipeId));
+      } catch (error) {
+        console.error("Failed to delete recipe", error);
+      }
+    }
+  };
+
+  const handleEdit = (recipeId) => {
+    navigate(`/recipes/edit/${recipeId}`);
+  };
+
+  const handleView = (recipeId) => {
+    navigate(`/recipes/${recipeId}`);
+  };
+
   if (loading) {
     return <div>Loading...</div>; // Show loading indicator while fetching profile
   }
@@ -165,6 +198,50 @@ const Profile = () => {
           Edit Profile
         </MuiButton>
       </Box>
+
+      <Typography variant="body2">
+        <strong>Created recipes:</strong> {recipes.length}
+      </Typography>
+
+      <Table>
+        <TableHead>
+          <TableRow>
+            <TableCell>Title</TableCell>
+            <TableCell>Description</TableCell>
+            <TableCell>Actions</TableCell>
+          </TableRow>
+        </TableHead>
+        <TableBody>
+          {recipes.map((recipe) => (
+            <TableRow key={recipe._id}>
+              <TableCell>{recipe.title}</TableCell>
+              <TableCell>{recipe.description.slice(0, 40)}...</TableCell>
+              <TableCell>
+                <Box sx={{ display: "flex", justifyContent: "center" }}>
+                  <IconButton
+                    onClick={() => handleView(recipe._id)}
+                    aria-label="view"
+                  >
+                    <VisibilityIcon />
+                  </IconButton>
+                  <IconButton
+                    onClick={() => handleEdit(recipe._id)}
+                    aria-label="edit"
+                  >
+                    <EditIcon />
+                  </IconButton>
+                  <IconButton
+                    onClick={() => handleDelete(recipe._id)}
+                    aria-label="delete"
+                  >
+                    <DeleteIcon />
+                  </IconButton>
+                </Box>
+              </TableCell>
+            </TableRow>
+          ))}
+        </TableBody>
+      </Table>
 
       <Modal
         open={modalOpen}
@@ -243,5 +320,3 @@ const Profile = () => {
 };
 
 export default Profile;
-
-// Wednesday 10:30
