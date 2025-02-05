@@ -43,3 +43,8 @@ npm install
 ```bash
 npm run dev
 ```
+## 📷 **Screenshots**  
+<p align="center">
+  <img src="./figma/login.png" alt="Login Screen" width="45%"/>
+  <img src="./figma/register.png" alt="Register Screen" width="45%"/>
+</p>
