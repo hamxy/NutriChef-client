@@ -32,8 +32,8 @@ NutriChef is a **recipe management and exploration tool** that allows users to c
 
 ### **1. Clone the repository**  
 ```bash
-git clone https://github.com/your-username/nutrichef-frontend.git
-cd nutrichef-frontend
+git clone https://github.com/hamxy/NutriChef-client.git
+cd NutriChef-client
 ```
 ### **2. Install dependencies**
 ```bash
